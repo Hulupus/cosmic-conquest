@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Cruiser
+comment1.params=x\ y
+comment1.target=Cruiser(int,\ int)
+comment2.params=
+comment2.target=void\ move()
+comment3.params=v
+comment3.target=void\ schie\u00DFen(sas.View)
+numComments=4

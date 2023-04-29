@@ -1,6 +1,6 @@
 import sas.*;
 
-public class Item{ //Text beschreibung hinufügen
+public class Item{
     //Name des Items
     private String name;
     

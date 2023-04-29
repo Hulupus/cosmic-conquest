@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Kontrollzentrum
+comment1.params=
+comment1.target=Kontrollzentrum()
+comment2.params=
+comment2.target=void\ starteSpiel()
+comment3.params=
+comment3.target=void\ starteLevel1()
+comment4.params=stats
+comment4.target=void\ aendereStat(double[][])
+numComments=5

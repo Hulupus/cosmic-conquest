@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Schiff
+comment1.params=type\ x\ y\ width\ height
+comment1.target=Schiff(java.lang.String,\ int,\ int,\ int,\ int)
+comment2.params=dir\ pV
+comment2.target=void\ move(double,\ double)
+comment3.params=
+comment3.target=double\ getX()
+comment4.params=
+comment4.target=double\ getY()
+comment5.params=
+comment5.target=boolean\ getHidden()
+comment6.params=hidden
+comment6.target=void\ toggleHidden(boolean)
+numComments=7

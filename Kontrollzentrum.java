@@ -6,6 +6,8 @@ public class Kontrollzentrum
 {
     private View view;
     
+    private int hallo;
+    
     //Hintergründe
     private Picture loadingscreen;
     private Picture titlescreen;

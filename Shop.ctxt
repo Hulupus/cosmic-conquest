@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Shop
+comment1.params=
+comment1.target=Shop()
+comment2.params=
+comment2.target=void\ openShop()
+comment3.params=
+comment3.target=void\ closeShop()
+comment4.params=
+comment4.target=void\ buyItem()
+comment5.params=
+comment5.target=void\ fillShop()
+comment6.params=
+comment6.target=void\ emptyShop()
+comment7.params=playedLvl
+comment7.target=void\ unlockItems(int)
+numComments=8
