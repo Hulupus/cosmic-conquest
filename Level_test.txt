@@ -1,0 +1,8 @@
+new Stage
+typ, xPos, yPos
+Cruiser,100
+...
+
+new Stage
+typ, xPos, yPos
+...
