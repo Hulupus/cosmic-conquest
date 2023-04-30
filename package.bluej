@@ -2,11 +2,11 @@
 dependency1.from=Shop
 dependency1.to=Item
 dependency1.type=UsesDependency
-dependency2.from=Level
-dependency2.to=Kontrollzentrum
+dependency2.from=Kontrollzentrum
+dependency2.to=Lebensanzeige
 dependency2.type=UsesDependency
-dependency3.from=Kontrollzentrum
-dependency3.to=Lebensanzeige
+dependency3.from=Level
+dependency3.to=Kontrollzentrum
 dependency3.type=UsesDependency
 editor.fx.0.height=1056
 editor.fx.0.width=1936

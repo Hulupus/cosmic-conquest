@@ -33,7 +33,7 @@ public class Level
     
     public void oeffneLevel(){
         for (int i = 0; i < CruiserPos.length; i++){
-            Kontrollzentrum.enemies[i].moveTo(CruiserPos[i][1], CruiserPos[i][2]);
+            //Kontrollzentrum.enemies[i].moveTo(CruiserPos[i][1], CruiserPos[i][2]);
             Kontrollzentrum.enemyMoveTo(i, CruiserPos[i][1], CruiserPos[i][2]);
         }
         /*for (int i = 0; i < BomberPos.length; i++){
