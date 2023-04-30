@@ -12,7 +12,7 @@ public class Level
     //Logik zum Spawning?
     //->Pixelgröße als Lösung?
     
-    private Stage[] stages;
+    // private Stage[] stages;
     
     private int[][] CruiserPos;
     private int[][] BomberPos;
@@ -51,8 +51,8 @@ public class Level
         }*/
     }
     
-    public boolean StageBeendet(){
+    // public boolean StageBeendet(){
         
-    }
+    // }
 }
 //(CruiserPos[i][1], CruiserPos[i][2])
