@@ -50,5 +50,9 @@ public class Level
             Bomber[i].moveTo(BomberPos[i][1], BomberPos[i][2]);
         }*/
     }
+    
+    public boolean StageBeendet(){
+        
+    }
 }
 //(CruiserPos[i][1], CruiserPos[i][2])
