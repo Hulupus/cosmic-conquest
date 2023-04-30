@@ -11,7 +11,7 @@ public class Cruiser extends MitGeschuetz
     }
     
     public void move() {
-        move(180, 1);
+        move(180, 0.5);
     }
     
     public void schießen(View v) {

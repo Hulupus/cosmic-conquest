@@ -16,11 +16,15 @@ public class Kontrollzentrum
     
     //Schiffe
     private PlayerShip mainShip;
-    static public Cruiser[] enemies;
+    private Cruiser[] enemies;
+    
+    //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
     
     //Sonstiges
     private Picture startbutton;
     private Lebensanzeige leben;
+    
+    private Level level;
 
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
@@ -30,7 +34,7 @@ public class Kontrollzentrum
         background = new Picture(0, 0, 800, 800,  "assets/views/background.png");
         background.setHidden(true);
 
-        
+        level = new Level();
 
         explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
@@ -70,21 +74,26 @@ public class Kontrollzentrum
     }
     
     public void starteLevel1() {
-        enemies[3].schießen();
-        
+        level.oeffneLevel(enemies[3]);
         for (;;) {
-            mainShip.move(view);
-            mainShip.schießen(view);
-            mainShip.bewegeLaser();
-            // for (int i = 0; i < enemies.length; i++) {
-                // enemies[i].move();
-                // enemies[i].schießen();
-                
-            enemies[3].schießen();
-            enemies[3].bewegeLaser();
-            // }
+            enemies[3].move();
             view.wait(3);
         }
+        //enemies[3].schießen();
+        
+        // for (;;) {
+            // mainShip.move(view);
+            // mainShip.schießen(view);
+            // mainShip.bewegeLaser();
+            // // for (int i = 0; i < enemies.length; i++) {
+                // // enemies[i].move();
+                // // enemies[i].schießen();
+                
+            // enemies[3].schießen();
+            // enemies[3].bewegeLaser();
+            // // }
+            
+        // }
     }
     // for (;;) {
             // mainShip.move(view);
