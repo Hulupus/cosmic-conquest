@@ -16,7 +16,7 @@ public class Kontrollzentrum
     
     //Schiffe
     private PlayerShip mainShip;
-    public Cruiser[] enemies;
+    static public Cruiser[] enemies;
     
     //Sonstiges
     private Picture startbutton;
