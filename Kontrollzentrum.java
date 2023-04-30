@@ -16,7 +16,7 @@ public class Kontrollzentrum
     
     //Schiffe
     private PlayerShip mainShip;
-    private Cruiser[] enemies;
+    public Cruiser[] enemies;
     
     //Sonstiges
     private Picture startbutton;
@@ -193,5 +193,9 @@ public class Kontrollzentrum
                 
             }
         }
+    }
+    
+    public void enemyMoveTo(int i, int xPos, int yPos){
+        enemies[i].MoveTo(xPos, yPos);
     }
 }
