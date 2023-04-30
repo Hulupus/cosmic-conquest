@@ -25,6 +25,8 @@ public class Kontrollzentrum
     private Lebensanzeige leben;
     
     private Level level;
+    
+    // Hi
 
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
