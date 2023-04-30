@@ -6,8 +6,6 @@ public class Kontrollzentrum
 {
     private View view;
     
-    private int hallo;
-    
     //Hintergründe
     private Picture loadingscreen;
     private Picture titlescreen;
@@ -75,7 +73,7 @@ public class Kontrollzentrum
         enemies[3].schießen();
         
         for (;;) {
-            // mainShip.move(view);
+            mainShip.move(view);
             mainShip.schießen(view);
             mainShip.bewegeLaser();
             // for (int i = 0; i < enemies.length; i++) {

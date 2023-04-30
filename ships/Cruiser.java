@@ -4,11 +4,9 @@ import sas.*;
 
 public class Cruiser extends MitGeschuetz
 {
-    private Picture lasers[];
-    
     public Cruiser(int x, int y)
     {
-        super("cruiser", 1, x, y, 50, 50);
+        super("cruiser", 20, x, y, 50, 50);
         setFirePosition(50/2);
     }
     
