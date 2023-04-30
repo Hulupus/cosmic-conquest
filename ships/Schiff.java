@@ -13,7 +13,7 @@ public class Schiff
     
     public Schiff(String type, int x,int y, int width, int height)
     {
-        schiff = new Picture(x, y, width, height, "Space_Ship_" + type + ".png");
+        schiff = new Picture(x, y, width, height, "assets/ships/Space_Ship_" + type + ".png");
     }
     
     public void move(double dir, double pV) {

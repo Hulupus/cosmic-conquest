@@ -18,7 +18,7 @@ public class Lebensanzeige
         amountHearts = lives;
         maxLives = mxLives;
         for (int i = 0; i < mxLives; i++) {
-            herzen.add(new Picture(25*i+10, 760, 37, 30, "Herz.png"));
+            herzen.add(new Picture(25*i+10, 760, 37, 30, "assets/views/Herz.png"));
             //Herz = neues Bild(x, y, breite, höhe , datei)
             if (i+1 > lives) {
                 herzen.get(i).setHidden(true);

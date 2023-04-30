@@ -25,14 +25,14 @@ public class Kontrollzentrum
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
 
-        loadingscreen = new Picture(0, 0, 800, 800, "Cosmic_Conquest_loadingscreen.png");
+        loadingscreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_loadingscreen.png");
 
-        background = new Picture(0, 0, 800, 800,  "background.png");
+        background = new Picture(0, 0, 800, 800,  "assets/views/background.png");
         background.setHidden(true);
 
         
 
-        explosion = new Picture(0, 0, 60, 60, "Explosion.png");
+        explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
         
         enemies = new Cruiser[6];
@@ -40,8 +40,8 @@ public class Kontrollzentrum
             enemies[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
         }
         
-        titlescreen = new Picture(0, 0, 800, 800, "Cosmic_Conquest_titlescreen.png");
-        startbutton = new Picture(250, 450 , 300, 100, "Cosmic_Conquest_startbutton.png");
+        titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
+        startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
         mainShip = new PlayerShip();
         starteSpiel();
         

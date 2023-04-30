@@ -56,12 +56,12 @@ public class Shop
     public void buyItem() {
         for (int i = 0; i < inShopItems.size(); i++){
             if (inShopItems.get(i).clicked()){
-                if (Kontrollzentrum.getMoney() >= inShopItems.get(i).getPrice()){
+                /*if (Kontrollzentrum.getMoney() >= inShopItems.get(i).getPrice()){
                     inShopItems.get(i).setgekauft(true);
                     boughtItems.add(inShopItems.get(i));
                     inShopItems.remove(i);
                     Kontrollzentrum.setMoney(Kontrollzentrum.getMoney() - inShopItems.get(i).getPrice());
-                }
+                }*/
             }
         }
     }

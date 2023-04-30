@@ -26,10 +26,10 @@ public class MitGeschuetz extends Schiff
        lasers = new Picture[laserCount];
        for (int i = 0; i < lasers.length; i++){
             if (type == "player") {
-                lasers[i] = new Picture (55,700,7,25,"Laser_green.png");
+                lasers[i] = new Picture (55,700,7,25,"assets/ships/Laser_green.png");
                 lasers[i].setDirection(0);
             } else {
-                lasers[i] = new Picture (55,700,7,25,"Laser_red.png");
+                lasers[i] = new Picture (55,700,7,25,"assets/ships/Laser_red.png");
                 lasers[i].setDirection(180);
             }
             lasers[i].setHidden(true);
