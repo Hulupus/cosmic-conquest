@@ -21,8 +21,4 @@ public class Cruiser extends MitGeschuetz
             addCooldownTime();
         }
     }
-    
-    public void MoveTo(int xPos, int yPos){
-        MoveTo(xPos, yPos);
-    }
 }

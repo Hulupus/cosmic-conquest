@@ -21,6 +21,10 @@ public class Schiff
         schiff.move(pV);
     }
     
+    public void moveTo(int x, int y) {
+        schiff.moveTo(x, y);
+    }
+    
     public double getX() {
         return schiff.getShapeX();
     }

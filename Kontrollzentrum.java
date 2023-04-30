@@ -196,6 +196,6 @@ public class Kontrollzentrum
     }
     
     public void enemyMoveTo(int i, int xPos, int yPos){
-        enemies[i].MoveTo(xPos, yPos);
+        enemies[i].moveTo(xPos, yPos);
     }
 }
