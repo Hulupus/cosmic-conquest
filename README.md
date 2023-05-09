@@ -2,8 +2,11 @@
 
 Cosmic Conquest ist angelehnt an Space Invaders und wurde innerhalb einer Vorbereitungsphase für eine Klausur programmiert.
 
-## Gameplay
+In dieser Abwandlung gibt es nun ein festes Leveldesign, das durch lange Spiele den Spieler vor eine klare Herausforderung stellt.
+Neue Ideen, wie verschiedene Gegnertypen, ein Shop mit Items, die jeden neuen Durchlauf interessant gestalten, oder sogar ein Coop-Modus, sorgen für ein ganz neues Spielgefühl.
 
+## Gameplay
+// TODO
 
 
 ### 
