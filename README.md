@@ -8,7 +8,7 @@ Cosmic Conquest ist angelehnt an Space Invaders und wurde innerhalb einer Vorber
 
 ### 
 
-## Requirments
+## Requirements
 
 Um Cosmic Conquest zu spielen, wird das Programm BlueJ und zusätzlich die sas-s benötigt.
 
