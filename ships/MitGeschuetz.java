@@ -57,28 +57,34 @@ public class MitGeschuetz extends Schiff
         }
     }
     
+    public boolean collides(Schiff ship) {
+        //collidiert
+        if (super.collides(ship)) {
+            return true;
+        }
+        //abgeschossen
+        for (int i = 0; i < lasers.length; i++) {
+            if (lasers[i].getHidden()) {continue;}
+            if (lasers[i].intersects(ship.getSchiff())) {
+                lasers[i].setHidden(true);
+                return true;
+            }
+        }
+        //nichts passiert
+        return false;
+    }
+    
+    
     public boolean canFire () {
         if (cooldown < tSchuss) {return false;}
         return true;
     }
     
-    public void addCooldownTime () {
+    protected void addCooldownTime () {
         cooldown += 1;
     }
     
     public void setFirePosition(int newPos) {
         firePosition = newPos;
     }
-    
-    // public boolean trifft(Schiff eShip){
-        // for (int i = 0; i < lasers.length; i++){
-            // if (lasers[i].intersects(eShip.schiff)){
-                // if Schiff kolidiert mit gegnerischen Laser
-                // lasers[i].setHidden(true);
-                // return true;
-            // }
-        // }
-        // return false; 
-    // }
-    
 }

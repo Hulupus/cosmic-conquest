@@ -75,14 +75,25 @@ public class Kontrollzentrum
     
     public void starteLevel1() {
         for (;;) {
+            //Bewegen
             mainShip.move(view);
+            //Schießen + Laserbewegung
+            //Hits
+            
             mainShip.schießen(view);
             mainShip.bewegeLaser();
             for (int i = 0; i < enemies.length; i++) {
+                //Temp
+                if (enemies[i].getHidden()) {continue;}
+                
                 enemies[i].move();
                 enemies[i].schießen();
                 enemies[i].bewegeLaser();
+                if (enemies[i].collides(mainShip)) {
+                    leben.removeHeart();
+                }
             }
+            
             view.wait(3);
         }
     }

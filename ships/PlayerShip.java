@@ -12,6 +12,12 @@ public class PlayerShip extends MitGeschuetz
     }
     
     public void move(View v) {
+        if (v.keyPressed('w') && getX() >= 0) {
+            super.move(0, 1);
+        }
+        if (v.keyPressed('s') && getX() <= v.getWidth() - 70) {
+            super.move(180, 1);
+        }
         if (v.keyPressed('a') && getX() >= 0) {
             super.move(270, 1);
         }

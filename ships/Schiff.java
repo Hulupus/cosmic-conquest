@@ -25,6 +25,20 @@ public class Schiff
         schiff.moveTo(x, y);
     }
     
+    //getroffen bzw. collidiert
+    
+    public boolean collides(Schiff ship){
+        if (schiff.intersects(ship.schiff)){
+            return true;
+        }
+        return false;
+    }
+    
+    /* ****** Getter und Setter ****** */
+    protected Picture getSchiff() {
+        return schiff;
+    }
+    
     public double getX() {
         return schiff.getShapeX();
     }

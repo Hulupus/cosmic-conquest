@@ -7,5 +7,7 @@ public class Bomber extends Schiff
         super("cruiser", x, y, 50, 50);
     }
 
-    
+    public void move() {
+        move(180, 0.5);
+    }
 }
