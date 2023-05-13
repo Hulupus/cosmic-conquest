@@ -78,10 +78,12 @@ public class Kontrollzentrum
             //Bewegen
             mainShip.move(view);
             //Schießen + Laserbewegung
-            //Hits
-            
             mainShip.schießen(view);
             mainShip.bewegeLaser();
+            //Hits
+            
+            
+            
             for (int i = 0; i < enemies.length; i++) {
                 //Temp
                 if (enemies[i].getHidden()) {continue;}

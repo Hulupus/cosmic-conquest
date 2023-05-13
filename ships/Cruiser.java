@@ -4,14 +4,17 @@ import sas.*;
 
 public class Cruiser extends MitGeschuetz
 {
-    public Cruiser(int x, int y)
+    
+    
+    public Cruiser(int xPos, int yPos)
     {
-        super("cruiser", 20, x, y, 50, 50);
+        super("cruiser", 20, xPos, yPos, 50, 50);
         setFirePosition(50/2);
     }
     
     public void move() {
-        move(180, 0.5);
+        
+        move(180, 0.2);
     }
     
     public void schießen() {
