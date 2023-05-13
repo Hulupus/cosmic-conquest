@@ -14,7 +14,7 @@ public class Cruiser extends MitGeschuetz
         move(180, 0.5);
     }
     
-    public void schießen(View v) {
+    public void schießen() {
         if (canFire()) {
             super.schießen();
         } else {

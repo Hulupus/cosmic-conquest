@@ -74,26 +74,17 @@ public class Kontrollzentrum
     }
     
     public void starteLevel1() {
-        level.oeffneLevel(enemies[3]);
         for (;;) {
-            enemies[3].move();
+            mainShip.move(view);
+            mainShip.schießen(view);
+            mainShip.bewegeLaser();
+            for (int i = 0; i < enemies.length; i++) {
+                enemies[i].move();
+                enemies[i].schießen();
+                enemies[i].bewegeLaser();
+            }
             view.wait(3);
         }
-        //enemies[3].schießen();
-        
-        // for (;;) {
-            // mainShip.move(view);
-            // mainShip.schießen(view);
-            // mainShip.bewegeLaser();
-            // // for (int i = 0; i < enemies.length; i++) {
-                // // enemies[i].move();
-                // // enemies[i].schießen();
-                
-            // enemies[3].schießen();
-            // enemies[3].bewegeLaser();
-            // // }
-            
-        // }
     }
     // for (;;) {
             // mainShip.move(view);

@@ -39,19 +39,11 @@ public class MitGeschuetz extends Schiff
     public void schießen() {
         boolean hasFired = false;
         for (int i = 0; i < lasers.length; i++) {
-            /*if (!lasers[i].getHidden()) {continue;}
+            if (!lasers[i].getHidden()) {continue;}
             lasers[i].moveTo(getX() + firePosition, getY());
             lasers[i].setHidden(false);
             cooldown = 0;
             return;
-            */
-            if (lasers[i].getHidden() && !hasFired) {
-                lasers[i].moveTo(getX() + firePosition ,getY());
-                lasers[i].setHidden(false);
-                hasFired = true;
-                cooldown = 0;
-                return;
-            }
         }
     }
     
@@ -77,6 +69,7 @@ public class MitGeschuetz extends Schiff
     public void setFirePosition(int newPos) {
         firePosition = newPos;
     }
+    
     // public boolean trifft(Schiff eShip){
         // for (int i = 0; i < lasers.length; i++){
             // if (lasers[i].intersects(eShip.schiff)){
