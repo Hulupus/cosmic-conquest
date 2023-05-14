@@ -6,6 +6,7 @@ import java.awt.Color;
 public class Schiff
 {
     private Picture schiff;
+    private int originXPosition;
     
     //Artribute:
     private int leben;
@@ -14,6 +15,7 @@ public class Schiff
     public Schiff(String type, int x,int y, int width, int height)
     {
         schiff = new Picture(x, y, width, height, "assets/ships/Space_Ship_" + type + ".png");
+        originXPosition = x;
     }
     
     public void move(double dir, double pV) {
@@ -21,8 +23,9 @@ public class Schiff
         schiff.move(pV);
     }
     
-    public void moveTo(int x, int y) {
-        schiff.moveTo(x, y);
+    public void moveTo(int newXPos, int newYPos) {
+        schiff.moveTo(newXPos, newYPos);
+        originXPosition = newXPos;
     }
     
     //getroffen bzw. collidiert
@@ -37,6 +40,10 @@ public class Schiff
     /* ****** Getter und Setter ****** */
     protected Picture getSchiff() {
         return schiff;
+    }
+    
+    public int getOriginX() {
+        return originXPosition;
     }
     
     public double getX() {

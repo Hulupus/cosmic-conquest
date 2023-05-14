@@ -24,8 +24,6 @@ public class Kontrollzentrum
     private Picture startbutton;
     private Lebensanzeige leben;
     
-    private Level level;
-    
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
 
@@ -33,8 +31,6 @@ public class Kontrollzentrum
 
         background = new Picture(0, 0, 800, 800,  "assets/views/background.png");
         background.setHidden(true);
-
-        level = new Level();
 
         explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
@@ -55,8 +51,6 @@ public class Kontrollzentrum
         boolean gamestarted = false;
         while (!gamestarted) {
             if (startbutton.mouseClicked()) {
-                gamestarted = true;
-
                 titlescreen.setHidden(true);
                 background.setHidden(false);
                 startbutton.setHidden(true);
@@ -67,6 +61,7 @@ public class Kontrollzentrum
                     mainShip.move(0, 1);
                     view.wait(3);
                 }
+                gamestarted = true;
             }
             view.wait(100);
         }
@@ -75,30 +70,45 @@ public class Kontrollzentrum
     
     public void starteLevel1() {
         for (;;) {
-            //Bewegen
             mainShip.move(view);
-            //Schießen + Laserbewegung
-            mainShip.schießen(view);
+            moveEnemyShips();
+            
             mainShip.bewegeLaser();
-            //Hits
+            mainShip.schießen(view);
+            letEnemyShipsFire();
             
-            
-            
-            for (int i = 0; i < enemies.length; i++) {
-                //Temp
-                if (enemies[i].getHidden()) {continue;}
-                
-                enemies[i].move();
-                enemies[i].schießen();
-                enemies[i].bewegeLaser();
-                if (enemies[i].collides(mainShip)) {
-                    leben.removeHeart();
-                }
-            }
+            destroyCollidingShips();
             
             view.wait(3);
         }
     }
+    
+    public void moveEnemyShips() {
+        for (int i = 0; i < enemies.length; i++) {
+            if (enemies[i].getHidden()) {continue;}
+            enemies[i].move();
+        }
+    }
+    
+    public void letEnemyShipsFire() {
+        for (int i = 0; i < enemies.length; i++) {
+            enemies[i].bewegeLaser();
+            if (enemies[i].getHidden()) {continue;}
+            enemies[i].schießen();
+        }
+    }
+    
+    public void destroyCollidingShips() {
+        for (int i = 0; i < enemies.length; i++) {
+            if (enemies[i].collides(mainShip)) {
+                leben.removeHeart();
+            }
+            if (mainShip.collides(enemies[i])) {
+                enemies[i].toggleHidden(true);
+            }
+        }
+    }
+    
     // for (;;) {
             // mainShip.move(view);
             // view.wait(3);

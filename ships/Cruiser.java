@@ -4,7 +4,9 @@ import sas.*;
 
 public class Cruiser extends MitGeschuetz
 {
+    private static final int MAX_X_MOVE_DISTANZ = 50;
     
+    private int moveDirection = 120;
     
     public Cruiser(int xPos, int yPos)
     {
@@ -13,12 +15,14 @@ public class Cruiser extends MitGeschuetz
     }
     
     public void move() {
-        
-        move(180, 0.2);
+        if (Math.abs(getOriginX()-getX()) > MAX_X_MOVE_DISTANZ)  {
+            moveDirection = -moveDirection;
+        }
+        move(moveDirection, 0.2);
     }
     
     public void schießen() {
-        if (canFire()) {
+        if (canFire() && Tools.randomNumber(0, 600) == 9) {
             super.schießen();
         } else {
             addCooldownTime();
