@@ -61,7 +61,7 @@ public class Kontrollzentrum
                 background.setHidden(false);
                 startbutton.setHidden(true);
 
-                leben = new Lebensanzeige(3, 10);
+                leben = new Lebensanzeige(3);
 
                 for (int i = 0; i < 100; i++) {
                     mainShip.move(0, 1);

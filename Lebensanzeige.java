@@ -8,53 +8,43 @@ import java.util.ArrayList;
  */
 public class Lebensanzeige
 {
-    ArrayList<Picture> herzen;
-    int amountHearts;
-    int maxLives;
+    private static final int MAX_HEARTS = 10;
     
-    public Lebensanzeige(int lives, int mxLives)
+    private ArrayList<Picture> hearts;
+    private int currentAmountOfHearts;
+    
+    public Lebensanzeige(int startingHearts)
     {
-        herzen = new ArrayList<>();
-        amountHearts = lives;
-        maxLives = mxLives;
-        for (int i = 0; i < mxLives; i++) {
-            herzen.add(new Picture(25*i+10, 760, 37, 30, "assets/views/Herz.png"));
-            //Herz = neues Bild(x, y, breite, höhe , datei)
-            if (i+1 > lives) {
-                herzen.get(i).setHidden(true);
+        hearts = new ArrayList<>();
+        currentAmountOfHearts = startingHearts;
+        for (int i = 0; i < MAX_HEARTS; i++) {
+            hearts.add(new Picture(25*i+10, 760, 37, 30, "assets/views/Herz.png"));
+            if (i > startingHearts-1) {
+                hearts.get(i).setHidden(true);
             }
         }
     }
     
     public void removeHeart() {
-        //Sperre: Man kann nicht weniger Herzen als 0 haben
-        if (amountHearts == 0) {return;}
-        herzen.get(amountHearts-1).setHidden(true);
-        amountHearts--;
+        if (currentAmountOfHearts == 0) {return;}
+        hearts.get(currentAmountOfHearts-1).setHidden(true);
+        currentAmountOfHearts--;
     }
     
     public void addHeart() {
-        //Sperre: Man kann nicht mehr Herzen hinzufügen als am Anfang erstellt
-        if (maxLives == amountHearts) {return;}
-        herzen.get(amountHearts).setHidden(false);
-        amountHearts++;
+        if (MAX_HEARTS == currentAmountOfHearts) {return;}
+        hearts.get(currentAmountOfHearts).setHidden(false);
+        currentAmountOfHearts++;
     }
     
-    public void resetHearts() {
-        amountHearts = maxLives;
-        for (int i = 0; i < maxLives; i++) {
-            herzen.get(i).setHidden(false);
+    public void resetHeartsTo(int startingHearts) {
+        startingHearts = MAX_HEARTS;
+        for (int i = 0; i < MAX_HEARTS; i++) {
+            hearts.get(i).setHidden(false);
         }
     }
     
-    public int getAmountHearts() {
-        return amountHearts;
-    }
-    
-    public void moveto(double x,double y){
-        amountHearts = maxLives;
-        for (int i = 0; i < maxLives; i++) {
-            herzen.get(i).moveTo(x,y);
-        }
-    }
+    // public int getAmountHearts() {
+        // return currentAmountOfHearts;
+    // }
 }
