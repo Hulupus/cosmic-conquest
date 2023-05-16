@@ -25,6 +25,7 @@ public class Kontrollzentrum
     private Picture startbutton;
     private Lebensanzeige leben;
     private int activeLevel;
+    private Level level1;
     
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
@@ -37,14 +38,15 @@ public class Kontrollzentrum
         explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
         
-        enemies = new Cruiser[6];
-        for (int i = 0; i < enemies.length; i++) {
-            enemies[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
+        cruiser = new Cruiser[6];
+        for (int i = 0; i < cruiser.length; i++) {
+            cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
         }
         
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
         mainShip = new PlayerShip();
+        
         starteSpiel();
         
     }
@@ -226,16 +228,26 @@ public class Kontrollzentrum
     
     //Levelsystem
     public void openNextStage(){
-        String[] enenytyp = getenemytyp();
-        for (i = 0; i < enenytyp.length; i++){
+        String[] enenytyp = level1.stage1.getenemytyp();
+        for (int i = 0; i < enenytyp.length; i++){
             if (enenytyp[i] == "Cruiser"){
-                for (j = 0;j > 
+                for (int j = 0;j > cruiser.length; j++){
+                    if (!cruiser[j].getactive){
+                        //bewge zu ausgelesener Pos
+                    }
+                }
+            } else if (enenytyp[i] == "Bomber"){
+                for (int k = 0;k > bomber.length; k++){
+                    if (!bomber[k].getactive){
+                        //bewge zu ausgelesener Pos
+                    }
+                }
             }
         }
     }
     
     public boolean stagezuende(){
-        if (/*alle Schiffe hidden/nicht aktiv*/){
+        if (true){
             return true;
         }
         return false;
