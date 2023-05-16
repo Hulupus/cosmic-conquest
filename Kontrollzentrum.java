@@ -60,7 +60,7 @@ public class Kontrollzentrum
                 leben = new Lebensanzeige(3);
 
                 for (int i = 0; i < 100; i++) {
-                    mainShip.move(0, 1);
+                    mainShip.move(0);
                     view.wait(3);
                 }
                 gamestarted = true;
