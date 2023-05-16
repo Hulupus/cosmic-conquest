@@ -43,7 +43,7 @@ public class Kontrollzentrum
             cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
         }
         activeEnemies = new ArrayList<>();
-        activeEnemies.add(enemies[0]);
+        activeEnemies.add(cruiser[0]);
         
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
