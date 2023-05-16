@@ -6,22 +6,22 @@ import java.util.ArrayList;
 public class MitGeschuetz extends Schiff
 {
     private Picture[] lasers;
-    private int firePosition;
+    private int cooldown;
     
     //Artribute:
     private double tSchuss;
-    private int cooldown;
     private double vSchuss;
+    private double firePosition;
     
-    public MitGeschuetz(String type, int laserCount, int x,int y, int width, int height)
+    public MitGeschuetz(String type, int laserCount, int x,int y, int width, int height, double[] properties)
     {
-       super(type, x, y, width, height);
+       super(type, x, y, width, height, properties);
        
-       firePosition = 0;
+       tSchuss = properties[2];
+       vSchuss = properties[3];
+       firePosition = properties[4];
        
-       tSchuss = 180;
        cooldown = 0;
-       vSchuss = 3;
        
        lasers = new Picture[laserCount];
        for (int i = 0; i < lasers.length; i++){
@@ -73,7 +73,6 @@ public class MitGeschuetz extends Schiff
         //nichts passiert
         return false;
     }
-    
     
     public boolean canFire () {
         if (cooldown < tSchuss) {return false;}

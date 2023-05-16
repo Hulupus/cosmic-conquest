@@ -6,21 +6,23 @@ import java.awt.Color;
 public class Schiff
 {
     private Picture schiff;
-    private int originXPosition;
     
     //Artribute:
     private int leben;
-    private double vFlug;
+    private double vFlight; //Speed of Ship
+    private int originXPosition; //xPos to allow centered left and right movement
     
-    public Schiff(String type, int x,int y, int width, int height)
+    public Schiff(String type, int x,int y, int width, int height, double[] properties)
     {
         schiff = new Picture(x, y, width, height, "assets/ships/Space_Ship_" + type + ".png");
+        leben = (int) properties[0];
+        vFlight = properties[1];
         originXPosition = x;
     }
     
-    public void move(double dir, double pV) {
+    public void move(double dir) {
         schiff.setDirection(dir);
-        schiff.move(pV);
+        schiff.move(vFlight);
     }
     
     public void moveTo(int newXPos, int newYPos) {
