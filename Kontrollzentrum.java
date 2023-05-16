@@ -25,7 +25,8 @@ public class Kontrollzentrum
     private Picture startbutton;
     private Lebensanzeige leben;
     private int activeLevel;
-    private Level level1;
+    
+    private Level[] levels;
     
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
@@ -37,6 +38,9 @@ public class Kontrollzentrum
 
         explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
+        
+        levels = new Level[3];
+        levels[0] = new Level(1); //Todo
         
         cruiser = new Cruiser[6];
         for (int i = 0; i < cruiser.length; i++) {
@@ -230,22 +234,22 @@ public class Kontrollzentrum
     
     //Levelsystem
     public void openNextStage(){
-        String[] enenytyp = level1.stage1.getenemytyp();
+        String[] enemyTypes = levels[0].getStageEnemies();
         for (int i = 0; i < enenytyp.length; i++){
             if (enenytyp[i] == "Cruiser"){
                 for (int j = 0;j > cruiser.length; j++){
-                    if (!cruiser[j].getactive){
+                    if (!true){//cruiser[j].getactive){
                         //bewge zu ausgelesener Pos
                         //(kopiere) in Array activeCruiser
                     }
                 }
             } else if (enenytyp[i] == "Bomber"){
-                for (int k = 0;k > bomber.length; k++){
-                    if (!bomber[k].getactive){
-                        //bewge zu ausgelesener Pos
-                        //(kopiere) in Array activeBomber
-                    }
-                }
+                // for (int k = 0;k > bomber.length; k++){
+                    // if (!bomber[k].getactive){
+                        // //bewge zu ausgelesener Pos
+                        // //(kopiere) in Array activeBomber
+                    // }
+                // }
             }
         }
     }

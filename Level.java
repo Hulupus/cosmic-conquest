@@ -18,11 +18,11 @@ public class Level
     private int activeStage;
     private int LevelNummer;
     
-    public void Level(int LevelNummer) {//int pLevelNummer, int CruiserAnzahl, int BomberAnzahl, int pCruiserPos[][], int pBomberPos[][]){
+    public Level(int levelNummer) {//int pLevelNummer, int CruiserAnzahl, int BomberAnzahl, int pCruiserPos[][], int pBomberPos[][]){
         this.LevelNummer = LevelNummer;
         
         //for (int i = 0; i <
-        stage1 = new Stage();
+        //stage1 = new Stage();
     }
     
     // public void openNextStage(){
@@ -30,12 +30,15 @@ public class Level
     // }
     
     public boolean levelzuende(){
-        if (activeStage == stage.length){
-           return true;
-        }
+        // if (activeStage == stage.length){
+           // return true;
+        // }
         return false;
     }
     
+    public String[] getStageEnemies() {
+        return stage1.getEnemyTypes();
+    }
     // public boolean stagezuende(){
         // if (/*alle Schiffe hidden/nicht aktiv*/){
             // return true;

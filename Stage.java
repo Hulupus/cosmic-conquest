@@ -10,7 +10,7 @@ public class Stage
         this.enemyYPos = enemyYPos;
     }
 
-    public String[] getenemytyp(){
+    public String[] getEnemyTypes(){
         return enemytyp;
     }
 }
