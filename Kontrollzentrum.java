@@ -16,13 +16,15 @@ public class Kontrollzentrum
     
     //Schiffe
     private PlayerShip mainShip;
-    private Cruiser[] enemies;
+    private Cruiser[] cruiser;
+    private ArrayList <Schiff> activeShips;
     
     //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
     
     //Sonstiges
     private Picture startbutton;
     private Lebensanzeige leben;
+    private int activeLevel;
     
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
@@ -86,7 +88,7 @@ public class Kontrollzentrum
     public void moveEnemyShips() {
         for (int i = 0; i < enemies.length; i++) {
             if (enemies[i].getHidden()) {continue;}
-            enemies[i].move();
+            cruiser[i].move();
         }
     }
     
@@ -220,5 +222,22 @@ public class Kontrollzentrum
     
     public void enemyMoveTo(int i, int xPos, int yPos){
         enemies[i].moveTo(xPos, yPos);
+    }
+    
+    //Levelsystem
+    public void openNextStage(){
+        String[] enenytyp = getenemytyp();
+        for (i = 0; i < enenytyp.length; i++){
+            if (enenytyp[i] == "Cruiser"){
+                for (j = 0;j > 
+            }
+        }
+    }
+    
+    public boolean stagezuende(){
+        if (/*alle Schiffe hidden/nicht aktiv*/){
+            return true;
+        }
+        return false;
     }
 }
