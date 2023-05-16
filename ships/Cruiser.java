@@ -17,7 +17,7 @@ public class Cruiser extends MitGeschuetz
         if (Math.abs(getOriginX()-getX()) > MAX_X_MOVE_DISTANZ)  {
             moveDirection = -moveDirection;
         }
-        move(moveDirection);
+        super.move(moveDirection);
     }
     
     public void schießen() {

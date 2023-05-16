@@ -17,7 +17,7 @@ public class Kontrollzentrum
     //Schiffe
     private PlayerShip mainShip;
     private Cruiser[] cruiser;
-    private ArrayList <Schiff> activeEnemies;
+    private ArrayList <Cruiser> activeEnemies;
     
     //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
     
@@ -207,26 +207,26 @@ public class Kontrollzentrum
         // }
     // }
 
-    public void aendereStat(double[][] stats) {
-        //Anzahl der stats, die verändert werden
-        for (int i1 = 0; i1 < stats.length; i1++) {
-            if (stats[i1][0] == 0) {
-                for (int i2 = 0; i2 < stats[i1][1]; i2++) {
-                    leben.addHeart();            
-                }
-            } else if (stats[i1][0] == 1) {
+    // public void aendereStat(double[][] stats) {
+        // //Anzahl der stats, die verändert werden
+        // for (int i1 = 0; i1 < stats.length; i1++) {
+            // if (stats[i1][0] == 0) {
+                // for (int i2 = 0; i2 < stats[i1][1]; i2++) {
+                    // leben.addHeart();            
+                // }
+            // } else if (stats[i1][0] == 1) {
 
-            } else if (stats[i1][0] == 2) {
+            // } else if (stats[i1][0] == 2) {
 
-            } else if (stats[i1][0] == 3) {
+            // } else if (stats[i1][0] == 3) {
                 
-            }
-        }
-    }
+            // }
+        // }
+    // }
     
-    public void enemyMoveTo(int i, int xPos, int yPos){
-        enemies[i].moveTo(xPos, yPos);
-    }
+    // public void enemyMoveTo(int i, int xPos, int yPos){
+        // enemies[i].moveTo(xPos, yPos);
+    // }
     
     //Levelsystem
     public void openNextStage(){

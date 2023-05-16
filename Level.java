@@ -31,7 +31,7 @@ public class Level
     
     public boolean levelzuende(){
         if (activeStage == stage.length){
-            return true;
+           return true;
         }
         return false;
     }
