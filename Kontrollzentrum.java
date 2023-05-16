@@ -236,12 +236,14 @@ public class Kontrollzentrum
                 for (int j = 0;j > cruiser.length; j++){
                     if (!cruiser[j].getactive){
                         //bewge zu ausgelesener Pos
+                        //(kopiere) in Array activeCruiser
                     }
                 }
             } else if (enenytyp[i] == "Bomber"){
                 for (int k = 0;k > bomber.length; k++){
                     if (!bomber[k].getactive){
                         //bewge zu ausgelesener Pos
+                        //(kopiere) in Array activeBomber
                     }
                 }
             }
