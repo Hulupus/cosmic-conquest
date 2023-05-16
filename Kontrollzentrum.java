@@ -17,7 +17,7 @@ public class Kontrollzentrum
     //Schiffe
     private PlayerShip mainShip;
     private Cruiser[] cruiser;
-    private ArrayList <Schiff> activeShips;
+    private ArrayList <Schiff> activeEnemies;
     
     //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
     
@@ -41,6 +41,8 @@ public class Kontrollzentrum
         for (int i = 0; i < enemies.length; i++) {
             enemies[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
         }
+        activeEnemies = new ArrayList<>();
+        activeEnemies.add(enemies[0]);
         
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
@@ -86,27 +88,27 @@ public class Kontrollzentrum
     }
     
     public void moveEnemyShips() {
-        for (int i = 0; i < enemies.length; i++) {
-            if (enemies[i].getHidden()) {continue;}
-            cruiser[i].move();
+        for (int i = 0; i < activeEnemies.size(); i++) {
+            if (activeEnemies.get(i).getHidden()) {continue;}
+            activeEnemies.get(i).move();
         }
     }
     
     public void letEnemyShipsFire() {
-        for (int i = 0; i < enemies.length; i++) {
-            enemies[i].bewegeLaser();
-            if (enemies[i].getHidden()) {continue;}
-            enemies[i].schießen();
+        for (int i = 0; i < activeEnemies.size(); i++) {
+            activeEnemies.get(i).bewegeLaser();
+            if (activeEnemies.get(i).getHidden()) {continue;}
+            activeEnemies.get(i).schießen();
         }
     }
     
     public void destroyCollidingShips() {
-        for (int i = 0; i < enemies.length; i++) {
-            if (enemies[i].collides(mainShip)) {
+        for (int i = 0; i < activeEnemies.size(); i++) {
+            if (activeEnemies.get(i).collides(mainShip)) {
                 leben.removeHeart();
             }
-            if (mainShip.collides(enemies[i])) {
-                enemies[i].toggleHidden(true);
+            if (mainShip.collides(activeEnemies.get(i))) {
+                activeEnemies.get(i).toggleHidden(true);
             }
         }
     }
