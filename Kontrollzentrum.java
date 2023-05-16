@@ -235,15 +235,15 @@ public class Kontrollzentrum
     //Levelsystem
     public void openNextStage(){
         String[] enemyTypes = levels[0].getStageEnemies();
-        for (int i = 0; i < enenytyp.length; i++){
-            if (enenytyp[i] == "Cruiser"){
+        for (int i = 0; i < enemyTypes.length; i++){
+            if (enemyTypes[i] == "Cruiser"){
                 for (int j = 0;j > cruiser.length; j++){
-                    if (!true){//cruiser[j].getactive){
+                    if (!true){ //cruiser[j].getactive){
                         //bewge zu ausgelesener Pos
                         //(kopiere) in Array activeCruiser
                     }
                 }
-            } else if (enenytyp[i] == "Bomber"){
+            } else if (enemyTypes[i] == "Bomber"){
                 // for (int k = 0;k > bomber.length; k++){
                     // if (!bomber[k].getactive){
                         // //bewge zu ausgelesener Pos
