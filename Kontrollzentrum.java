@@ -19,6 +19,7 @@ public class Kontrollzentrum
     private Cruiser[] cruiser;
     private ArrayList <Cruiser> activeEnemies;
     
+    private Bomber[] bomber;
     //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
     
     //Sonstiges
@@ -48,6 +49,8 @@ public class Kontrollzentrum
         }
         activeEnemies = new ArrayList<>();
         activeEnemies.add(cruiser[0]);
+        
+        bomber = new Bomber[] { new Bomber(200, 200) };
         
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
@@ -98,6 +101,7 @@ public class Kontrollzentrum
             if (activeEnemies.get(i).getHidden()) {continue;}
             activeEnemies.get(i).move();
         }
+        bomber[0].move();
     }
     
     public void letEnemyShipsFire() {

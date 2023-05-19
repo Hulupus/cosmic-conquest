@@ -4,7 +4,7 @@ public class Bomber extends Schiff
 {
     public Bomber(int x, int y)
     {
-        super("cruiser", x, y, 50, 50, new double[] {1, 0.5});
+        super("bomber", x, y, 70, 70, new double[] {1, 0.7});
     }
 
     public void move() {
