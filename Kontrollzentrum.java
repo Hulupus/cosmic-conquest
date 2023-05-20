@@ -17,7 +17,7 @@ public class Kontrollzentrum
     //Schiffe
     private PlayerShip mainShip;
     private Cruiser[] cruiser;
-    private ArrayList <Cruiser> activeEnemies;
+    private ArrayList<Cruiser> activeEnemies;
     
     private Bomber[] bomber;
     //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
@@ -44,11 +44,14 @@ public class Kontrollzentrum
         levels[0] = new Level(1); //Todo
         
         cruiser = new Cruiser[6];
-        for (int i = 0; i < cruiser.length; i++) {
-            cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
-        }
         activeEnemies = new ArrayList<>();
-        activeEnemies.add(cruiser[0]);
+        for (int i = 0; i < cruiser.length; i++) {
+            activeEnemies.add(cruiser[i]);
+            cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
+            activeEnemies.add(cruiser[i]);
+        }
+        
+        
         
         bomber = new Bomber[] { new Bomber(200, 200) };
         
