@@ -20,6 +20,7 @@ public class Kontrollzentrum
     private ArrayList<Cruiser> activeEnemies;
     
     private Bomber[] bomber;
+    private ArrayList<Bomber> activeBomber;
     //aktiveShips => alle Schiffe des momentanen Levels => ArrayList / Array
     
     //Sonstiges
@@ -46,12 +47,14 @@ public class Kontrollzentrum
         cruiser = new Cruiser[6];
         activeEnemies = new ArrayList<>();
         for (int i = 0; i < cruiser.length; i++) {
-            activeEnemies.add(cruiser[i]);
             cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
             activeEnemies.add(cruiser[i]);
         }
         
-        
+        activeBomber = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            activeBomber.add(new Bomber(30 + 130*i, -40));
+        }
         
         bomber = new Bomber[] { new Bomber(200, 200) };
         
@@ -87,11 +90,11 @@ public class Kontrollzentrum
     public void starteLevel1() {
         for (;;) {
             mainShip.move(view);
-            moveEnemyShips();
-            
             mainShip.bewegeLaser();
             mainShip.schießen(view);
-            letEnemyShipsFire();
+            
+            letCruiserMove();
+            letBomberMove();
             
             destroyCollidingShips();
             
@@ -99,19 +102,20 @@ public class Kontrollzentrum
         }
     }
     
-    public void moveEnemyShips() {
-        for (int i = 0; i < activeEnemies.size(); i++) {
-            if (activeEnemies.get(i).getHidden()) {continue;}
-            activeEnemies.get(i).move();
-        }
-        bomber[0].move();
-    }
-    
-    public void letEnemyShipsFire() {
+    public void letCruiserMove() {
         for (int i = 0; i < activeEnemies.size(); i++) {
             activeEnemies.get(i).bewegeLaser();
             if (activeEnemies.get(i).getHidden()) {continue;}
+            activeEnemies.get(i).move();
             activeEnemies.get(i).schießen();
+        }
+        
+    }
+    
+    public void letBomberMove() {
+        for (int i = 0; i < activeBomber.size(); i++) {
+            if (activeBomber.get(i).getHidden()) {continue;}
+            activeBomber.get(i).move();
         }
     }
     
@@ -124,6 +128,15 @@ public class Kontrollzentrum
                 activeEnemies.get(i).toggleHidden(true);
             }
         }
+        
+        // for (int i = 0; i < activeBomber.size(); i++) {
+            // if (activeBomber.get(i).collides(mainShip)) {
+                // leben.removeHeart();
+            // }
+            // if (mainShip.collides(activeBomber.get(i))) {
+                // activeBomber.get(i).toggleHidden(true);
+            // }
+        // }
     }
     
     // for (;;) {
