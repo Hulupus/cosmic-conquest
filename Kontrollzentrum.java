@@ -56,8 +56,6 @@ public class Kontrollzentrum
             activeBomber.add(new Bomber(30 + 130*i, -40));
         }
         
-        bomber = new Bomber[] { new Bomber(200, 200) };
-        
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
         mainShip = new PlayerShip();
@@ -84,19 +82,17 @@ public class Kontrollzentrum
             }
             view.wait(100);
         }
-        starteLevel1();
+        starteLevel();
     }
     
-    public void starteLevel1() {
+    public void starteLevel() {
         for (;;) {
-            mainShip.move(view);
-            mainShip.bewegeLaser();
-            mainShip.schießen(view);
-            
             letCruiserMove();
             letBomberMove();
             
-            destroyCollidingShips();
+            mainShip.move(view);
+            mainShip.bewegeLaser();
+            mainShip.schießen(view);
             
             view.wait(3);
         }
@@ -104,6 +100,13 @@ public class Kontrollzentrum
     
     public void letCruiserMove() {
         for (int i = 0; i < activeEnemies.size(); i++) {
+            if (activeEnemies.get(i).collides(mainShip)) {
+                leben.removeHeart();
+            }
+            if (mainShip.collides(activeEnemies.get(i))) {
+                activeEnemies.get(i).toggleHidden(true);
+            }
+            
             activeEnemies.get(i).bewegeLaser();
             if (activeEnemies.get(i).getHidden()) {continue;}
             activeEnemies.get(i).move();
@@ -114,29 +117,15 @@ public class Kontrollzentrum
     
     public void letBomberMove() {
         for (int i = 0; i < activeBomber.size(); i++) {
+            if (activeBomber.get(i).collides(mainShip)) {
+                leben.removeHeart();
+            }
+            if (mainShip.collides(activeBomber.get(i))) {
+                activeBomber.get(i).toggleHidden(true);
+            }
             if (activeBomber.get(i).getHidden()) {continue;}
             activeBomber.get(i).move();
         }
-    }
-    
-    public void destroyCollidingShips() {
-        for (int i = 0; i < activeEnemies.size(); i++) {
-            if (activeEnemies.get(i).collides(mainShip)) {
-                leben.removeHeart();
-            }
-            if (mainShip.collides(activeEnemies.get(i))) {
-                activeEnemies.get(i).toggleHidden(true);
-            }
-        }
-        
-        // for (int i = 0; i < activeBomber.size(); i++) {
-            // if (activeBomber.get(i).collides(mainShip)) {
-                // leben.removeHeart();
-            // }
-            // if (mainShip.collides(activeBomber.get(i))) {
-                // activeBomber.get(i).toggleHidden(true);
-            // }
-        // }
     }
     
     // for (;;) {
