@@ -28,6 +28,9 @@ public class Level
                 
                 String[] xPositions = levelConfig[1].split(",");
                 
+                //if includes , => cordinates
+                //if includes ; => intervall => Tools.random();
+                
                 //for (xPositions) {}
                 Integer.parseInt();//pos x
                 //pos y
