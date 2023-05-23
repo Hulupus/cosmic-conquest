@@ -1,8 +1,10 @@
 import sas.View;
 import sas.Text;
 import ships.*;
-import java.util.ArrayList;
+
 import java.awt.Color;
+import java.util.ArrayList;
+import java.awt.MouseInfo;
 
 public class Levelbuilder
 {
@@ -41,7 +43,7 @@ public class Levelbuilder
             modeStatus.setFontColor(Color.RED);
             
             if (view.keyPressed('c')) {
-                cruiser.add(new Cruiser(30, 30));
+                cruiser.add(new Cruiser(30, 30));//(int) MouseInfo.getPointerInfo().getLocation().getX() + 680, (int) MouseInfo.getPointerInfo().getLocation().getY() + 140));
                 shipPositions.add(new Schiffposition("cruiser", cruiser.size()-1, 30, 30));
                 moveShip(cruiser.get(cruiser.size()-1), shipPositions.size()-1);
                 resetShips();
