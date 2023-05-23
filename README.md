@@ -13,7 +13,7 @@ Neue Ideen, wie verschiedene Gegnertypen, ein Shop mit Items, die jeden neuen Du
 
 ## Requirements
 
-Um Cosmic Conquest zu spielen, wird das Programm BlueJ und zusätzlich die sas-s benötigt.
+Um Cosmic Conquest zu spielen, wird das Programm BlueJ und zusätzlich die sas-Bibliothek benötigt.
 
 BlueJ: https://www.bluej.org/
 
