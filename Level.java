@@ -19,9 +19,11 @@ public class Level
 
         String[] levelConfig = StringFileTools.loadFileInStringArray(fileName);
         for (int i = 0; i < levelConfig.length; i++) {
-            //jump to stage to begin reading
-            while (!levelConfig[i].contains("//") && i < levelConfig.length) {continue;}
+            if (!levelConfig[i].contains("//")) {
+                continue;
+            }
             i++;
+            
             //begin reading all ships in line
             ArrayList<Schiffposition> enemies = new ArrayList<>();
             while (!levelConfig[i].contains("//") && i < levelConfig.length) {
@@ -64,10 +66,7 @@ public class Level
         }
         return positions;
     }
-
-    public ArrayList<Schiffposition> getStage() {
-        return stages.get(0);
-    }
+    
     /*
      * Sicherheiten einprogrammieren?
      * 
