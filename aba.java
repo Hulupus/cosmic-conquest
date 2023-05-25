@@ -16,6 +16,7 @@ public class aba
     public aba()
     {
         Level a = new Level(1);
+        a.getStage();
     }
 
     /**

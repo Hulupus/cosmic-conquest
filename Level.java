@@ -1,89 +1,106 @@
 import ships.*;
 import sasio.*;
 import sas.Tools;
+import java.util.ArrayList;
 
 public class Level
 {
-    private Stage stage1;
-    private int activeStage;
-    
+    private ArrayList<ArrayList<Schiffposition>>stages;
+    private int activeStage = 0; // oder -1?
+
     public Level(int levelNummer) {
+        stages = new ArrayList<>();
         String fileName = "levels/level" + levelNummer + ".txt";
-        
+
         if(!StringFileTools.fileExists(fileName)) {
             System.out.print("Level" + levelNummer + " konnte nicht geladen werden");
             return;
         }
-        
+
         String[] levelConfig = StringFileTools.loadFileInStringArray(fileName);
         for (int i = 0; i < levelConfig.length; i++) {
             //jump to stage to begin reading
             while (!levelConfig[i].contains("//") && i < levelConfig.length) {continue;}
             i++;
+            //begin reading all ships in line
+            ArrayList<Schiffposition> enemies = new ArrayList<>();
             while (!levelConfig[i].contains("//") && i < levelConfig.length) {
-                String[] shipTypes = levelConfig[i].split(";");
-                
-                //Todo: own func ;; only written to hold on to the idea ;; needs to be 2x because x and y 
-                if (levelConfig[2].contains(",")) {
-                    String[] xPositions = levelConfig[1].split(",");
-                    //pos.länge muss =Amount sein
-                    int[] positions = new int[Integer.parseInt(levelConfig[1])];
-                    for (int j = 0; j < Integer.parseInt(levelConfig[1]); j++) {
-                        positions[j] = Integer.parseInt(xPositions[j]);
-                    }
-                } else if (levelConfig[2].contains("::")) {
-                    String[] xPositions = levelConfig[1].split("::");
-                    //Pos.länge muss 2 sein
-                    int[] positions = new int[Integer.parseInt(levelConfig[1])];
-                    for (int j = 0; j < Integer.parseInt(levelConfig[1]); j++) {
-                        positions[j] = Tools.randomNumber(Integer.parseInt(xPositions[0]), Integer.parseInt(xPositions[1]));
-                    }
+                String[] shipGroup = levelConfig[i].split(";");
+
+                int amountOfShips = Integer.parseInt(shipGroup[1]);
+                int[] xPositions = turnStringToPositions(shipGroup[2], amountOfShips);
+                int[] yPositions = turnStringToPositions(shipGroup[3], amountOfShips);
+
+                for (int j = 0; j < amountOfShips; j++) {
+                    enemies.add(new Schiffposition(
+                            shipGroup[0],
+                            -1,
+                            xPositions[j],  
+                            yPositions[j]
+                        ));
                 }
-                
-                
-                /*
-                 * Config:
-                 * 1: Type
-                 * 2: Amount
-                 * 3: x
-                 * 4: y
-                 *  ;  Coordinates (as long as amount) => Integer.parseInt
-                 *  :: Intervall (only two numbers)    => Tools.random
-                 */
-                
-                
-                //if includes , => cordinates
-                //if includes ; => intervall => Tools.random();
-                
-                //for (xPositions) {}
-                //Integer.parseInt();//pos x
-                //pos y
-                String a = shipTypes[0];//type 
-                //arr Pos; -1
+
                 i++;
             }
-            //new Stage();
+            stages.add(enemies);
         }
     }
     
+    private int[] turnStringToPositions(String strPositions, int amountOfPositions) {
+        int[] positions = new int[amountOfPositions];
+        if (strPositions.contains(",")) {
+            String[] arrayPos = strPositions.split(",");
+            for (int i = 0; i < amountOfPositions; i++) {
+                positions[i] = Integer.parseInt(arrayPos[i]);
+            }
+        } else if (strPositions.contains("::")) {
+            String[] intervallPos = strPositions.split("::");
+            for (int i = 0; i < amountOfPositions; i++) {
+                positions[i] = Tools.randomNumber(
+                    Integer.parseInt(intervallPos[0]), 
+                    Integer.parseInt(intervallPos[1])
+                );
+            }
+        }
+        return positions;
+    }
+
+    public ArrayList<Schiffposition> getStage() {
+        return stages.get(0);
+    }
+    /*
+     * Sicherheiten einprogrammieren?
+     * 
+     */
+    
+    
+    /*
+     * Config:
+     * 1: Type
+     * 2: Amount
+     * 3: x
+     * 4: y
+     *  ;  Coordinates (as long as amount) => Integer.parseInt
+     *  :: Intervall (only two numbers)    => Tools.random
+     */
     // public void openNextStage(){
-        
+
     // }
-    
-    public boolean levelzuende(){
-        // if (activeStage == stage.length){
-           // return true;
-        // }
-        return false;
-    }
-    
-    public String[] getStageEnemies() {
-        return stage1.getEnemyTypes();
-    }
-    // public boolean stagezuende(){
-        // if (/*alle Schiffe hidden/nicht aktiv*/){
-            // return true;
-        // }
+
+    // public boolean levelzuende(){
+        // // if (activeStage == stage.length){
+        // // return true;
+        // // }
         // return false;
+    // }
+
+    // public String[] getStageEnemies() {
+        // return stage1.getEnemyTypes();
+    // }
+    // // public boolean stagezuende(){
+    // // if (/*alle Schiffe hidden/nicht aktiv*/){
+    // // return true;
+    // // }
+    // // return false;
     // }
 }
