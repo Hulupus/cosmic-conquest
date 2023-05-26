@@ -250,12 +250,11 @@ public class Kontrollzentrum
         System.out.println(stageShips);
         for (int i = 0; i < stageShips.size(); i++){
             System.out.println(stageShips.get(i).getType());
-            if (stageShips.get(i).getType() == stageShips.get(i).getType()){
+            if (stageShips.get(i).getType().equals("Cruiser")){
                 for (int j = 0;j < cruiser.length; j++){
-                    //if (!cruiser[j].getActive()){continue;}
-                    
-                    System.out.println("bewegt");
+                    if (cruiser[j].getActive()){continue;}
                     cruiser[j].moveTo(stageShips.get(i).getX(), stageShips.get(i).getY());
+                    cruiser[j].toggleActive(true);                    
                     break;
                 }
             } 

@@ -61,6 +61,10 @@ public class Schiff
         return isActive;
     }
     
+    public void toggleActive(boolean active) {
+        isActive = active;
+    }
+    
     public boolean getHidden() {
         return schiff.getHidden();    
     }
