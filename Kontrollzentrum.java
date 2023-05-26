@@ -30,7 +30,7 @@ public class Kontrollzentrum
     private Lebensanzeige leben;
     //private int activeLevel;
     
-    //private Level[] levels;
+    private Level level;
     
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
@@ -43,20 +43,20 @@ public class Kontrollzentrum
         explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
         
-        //levels = new Level[3];
-        //levels[0] = new Level(1); //Todo
+        
+        level = new Level(1);
         
         cruiser = new Cruiser[6];
-        activeEnemies = new ArrayList<>();
+        // activeEnemies = new ArrayList<>();
         for (int i = 0; i < cruiser.length; i++) {
             cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
-            activeEnemies.add(cruiser[i]);
+            // activeEnemies.add(cruiser[i]);
         }
         
-        activeBomber = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            activeBomber.add(new Bomber(30 + 130*i, -40));
-        }
+        // activeBomber = new ArrayList<>();
+        // for (int i = 0; i < 6; i++) {
+            // activeBomber.add(new Bomber(30 + 130*i, -40));
+        // }
         
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
@@ -84,7 +84,8 @@ public class Kontrollzentrum
             }
             view.wait(100);
         }
-        starteLevel();
+        openNextStage(level.getEnemies());
+        //starteLevel();
     }
     
     public void starteLevel() {
@@ -129,7 +130,7 @@ public class Kontrollzentrum
             activeBomber.get(i).move();
         }
     }
-}
+
     
     // for (;;) {
             // mainShip.move(view);
@@ -245,17 +246,20 @@ public class Kontrollzentrum
     // }
     
     //Levelsystem
-    // public void openNextStage(){
-        // //String[] enemyTypes = levels[0].getStageEnemies();
-        // for (int i = 0; i < enemyTypes.length; i++){
-            // if (enemyTypes[i] == "Cruiser"){
-                // for (int j = 0;j > cruiser.length; j++){
-                    // if (!true){ //cruiser[j].getactive){
-                        // //bewge zu ausgelesener Pos
-                        // //(kopiere) in Array activeCruiser
-                    // }
-                // }
-            // } else if (enemyTypes[i] == "Bomber"){
+    public void openNextStage(ArrayList<Schiffposition> stageShips){
+        System.out.println(stageShips);
+        for (int i = 0; i < stageShips.size(); i++){
+            System.out.println(stageShips.get(i).getType());
+            if (stageShips.get(i).getType() == stageShips.get(i).getType()){
+                for (int j = 0;j < cruiser.length; j++){
+                    //if (!cruiser[j].getActive()){continue;}
+                    
+                    System.out.println("bewegt");
+                    cruiser[j].moveTo(stageShips.get(i).getX(), stageShips.get(i).getY());
+                    break;
+                }
+            } 
+            // else if (stageShips.get(i).getType() == "Bomber"){
                 // // for (int k = 0;k > bomber.length; k++){
                     // // if (!bomber[k].getactive){
                         // // //bewge zu ausgelesener Pos
@@ -263,8 +267,9 @@ public class Kontrollzentrum
                     // // }
                 // // }
             // }
-        // }
-    // }
+        }
+    }
+}
     
     // public boolean stagezuende(){
         // if (true){

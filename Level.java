@@ -93,9 +93,9 @@ public class Level
         // return false;
     // }
 
-    // public String[] getStageEnemies() {
-        // return stage1.getEnemyTypes();
-    // }
+    public ArrayList<Schiffposition> getEnemies() {
+        return stages.get(0);
+    }
     // // public boolean stagezuende(){
     // // if (/*alle Schiffe hidden/nicht aktiv*/){
     // // return true;

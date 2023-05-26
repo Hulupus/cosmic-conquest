@@ -6,6 +6,7 @@ import java.awt.Color;
 public class Schiff
 {
     private Picture schiff;
+    private boolean isActive = false;
     
     //Artribute:
     private int leben;
@@ -54,6 +55,10 @@ public class Schiff
     
     public double getY() {
         return schiff.getShapeY();
+    }
+    
+    public boolean getActive() {
+        return isActive;
     }
     
     public boolean getHidden() {
