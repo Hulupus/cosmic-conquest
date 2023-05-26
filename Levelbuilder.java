@@ -15,7 +15,9 @@ public class Levelbuilder
     private ArrayList<Schiffposition> shipPositions;
     
     private ArrayList<Cruiser> cruiser;
+    private ArrayList<Bomber> bomber;
     
+    private String status;
     private Text modeStatus;
 
     public Levelbuilder()
@@ -23,6 +25,7 @@ public class Levelbuilder
         view = new View(800, 800, "Levelbuilder Cosmic Conquest");
         
         cruiser = new ArrayList<>();
+        bomber = new ArrayList<>();
         
         shipPositions = new ArrayList <>();
         
@@ -43,10 +46,15 @@ public class Levelbuilder
             modeStatus.setFontColor(Color.RED);
             
             if (view.keyPressed('c')) {
-                cruiser.add(new Cruiser(30, 30));//(int) MouseInfo.getPointerInfo().getLocation().getX() + 680, (int) MouseInfo.getPointerInfo().getLocation().getY() + 140));
-                shipPositions.add(new Schiffposition("cruiser", cruiser.size()-1, 30, 30));
+                cruiser.add(new Cruiser(30, 30));
+                shipPositions.add(new Schiffposition("Cruiser", cruiser.size()-1, 30, 30));
                 moveShip(cruiser.get(cruiser.size()-1), shipPositions.size()-1);
-                resetShips();
+            }
+            
+            if (view.keyPressed('b')) {
+                bomber.add(new Bomber(30, 30));
+                shipPositions.add(new Schiffposition("Bomber", bomber.size()-1, 30, 30));
+                moveShip(bomber.get(bomber.size()-1), shipPositions.size()-1);
             }
             
             if (view.keyPressed('r')) {
@@ -76,23 +84,26 @@ public class Levelbuilder
         }
         
         shipPositions.get(arrayIndex).setPosition((int) createdShip.getX(), (int) createdShip.getY());
+        createdShip.moveTo((int) createdShip.getX(), (int) createdShip.getY());
     }
 
     public void runShips() {
         modeStatus.setText("Running");
         modeStatus.setFontColor(Color.GREEN);
         
-        view.wait(100);
+        view.wait(300);
         
         while (!view.keyPressed('r')) {
             for (int i = 0; i < cruiser.size(); i++) {
                 cruiser.get(i).move();
             }
-            
+            for (int i = 0; i < bomber.size(); i++) {
+                bomber.get(0).move();
+            }
             view.wait(3);
         }
         
-        view.wait(100);
+        view.wait(300);
         
         resetShips();
     }
@@ -100,8 +111,11 @@ public class Levelbuilder
     public void resetShips()
     {
         for (int i = 0; i < shipPositions.size(); i++) {
-            if (shipPositions.get(i).getType() == "cruiser") {
+            if (shipPositions.get(i).getType() == "Cruiser") {
                 cruiser.get(shipPositions.get(i).getArrayIndex()).moveTo(shipPositions.get(i).getX(), shipPositions.get(i).getY());
+            }
+            if (shipPositions.get(i).getType() == "Bomber") {
+                bomber.get(shipPositions.get(i).getArrayIndex()).moveTo(shipPositions.get(i).getX(), shipPositions.get(i).getY());
             }
         }
     }

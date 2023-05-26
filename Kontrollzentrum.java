@@ -47,10 +47,10 @@ public class Kontrollzentrum
         level = new Level(1);
         
         cruiser = new Cruiser[6];
-        // activeEnemies = new ArrayList<>();
+        activeEnemies = new ArrayList<>();
         for (int i = 0; i < cruiser.length; i++) {
             cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
-            // activeEnemies.add(cruiser[i]);
+            cruiser[i].toggleHidden(true);// activeEnemies.add(cruiser[i]);
         }
         
         // activeBomber = new ArrayList<>();
@@ -247,14 +247,13 @@ public class Kontrollzentrum
     
     //Levelsystem
     public void openNextStage(ArrayList<Schiffposition> stageShips){
-        System.out.println(stageShips);
         for (int i = 0; i < stageShips.size(); i++){
-            System.out.println(stageShips.get(i).getType());
             if (stageShips.get(i).getType().equals("Cruiser")){
                 for (int j = 0;j < cruiser.length; j++){
                     if (cruiser[j].getActive()){continue;}
                     cruiser[j].moveTo(stageShips.get(i).getX(), stageShips.get(i).getY());
-                    cruiser[j].toggleActive(true);                    
+                    cruiser[j].toggleActive(true);
+                    cruiser[j].toggleHidden(false);
                     break;
                 }
             } 
