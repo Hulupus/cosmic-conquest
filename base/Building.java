@@ -6,8 +6,8 @@ package base;
  * @version (eine Versionsnummer oder ein Datum)
  */
 public class Building{
-    public Building()
-    {
+    //Preis (Materialien)
+    public Building(){
         
     }
 
