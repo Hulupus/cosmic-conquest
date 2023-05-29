@@ -1,5 +1,6 @@
 import sas.*;
 import sasio.*;
+import ships.*;
 
 /**
  * Beschreiben Sie hier die Klasse aba.
@@ -9,15 +10,26 @@ import sasio.*;
  */
 public class aba
 {
-    
+    private View view;
+    private Squasher b;
+
     /**
      * Konstruktor für Objekte der Klasse aba
      */
     public aba()
     {
-        String a = StringFileTools.loadFileInString("levels/level1.txt");
-        System.out.print("a" + "\n" + "as");
+        view = new View(800, 800);
+        b = new Squasher(-10, 0);
+        move();
+        // String a = StringFileTools.loadFileInString("levels/level1.txt");
+        // System.out.print("a" + "\n" + "as");
     }
 
-    
+    public void move() {
+        for (;;) {
+            b.move();
+            view.wait(3);
+        }
+    }
+
 }
