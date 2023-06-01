@@ -1,0 +1,13 @@
+//Stage 1
+Cruiser;2;30,345;30,29
+//Stage 1
+
+//Stage 2
+Cruiser;2;96,312;132,304
+Bomber;1;200;221
+//Stage 2
+
+//Stage 3
+Cruiser;1;124;142
+Bomber;2;253,561;189,184
+//Stage 3

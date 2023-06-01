@@ -1,0 +1,14 @@
+//Stage 1
+Cruiser;2;30,264;30,29
+//Stage 1
+
+//Stage 2
+Cruiser;2;30,264;30,29
+Bomber;2;126,335;90,78
+//Stage 2
+
+//Stage 3
+Cruiser;2;30,264;30,29
+Bomber;2;126,335;90,78
+**Bug: not recognising that layout has changed
+//Stage 3

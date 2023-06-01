@@ -7,6 +7,7 @@ import ships.*;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.MouseInfo;
 
 public class Levelbuilder
@@ -51,6 +52,7 @@ public class Levelbuilder
             
             if (view.keyPressed('c')) {
                 cruiser.add(new Cruiser(30, 30));
+                cruiser.get(cruiser.size()-1).setVeFlight(1);
                 shipPositions.add(new Schiffposition("Cruiser", cruiser.size()-1, 30, 30));
                 moveShip(cruiser.get(cruiser.size()-1), shipPositions.size()-1);
             }
@@ -69,6 +71,10 @@ public class Levelbuilder
             
             if (view.keyPressed('r')) {
                 runShips();
+            }
+            
+            if (view.keyPressed('s')) {
+                saveStageToFile();
             }
         }
     }
@@ -95,8 +101,8 @@ public class Levelbuilder
             view.wait(3);
         }
         
-        shipPositions.get(arrayIndex).setPosition((int) createdShip.getX(), (int) createdShip.getY());
-        createdShip.moveTo((int) createdShip.getX(), (int) createdShip.getY());
+        shipPositions.get(arrayIndex).setPosition(createdShip.getX(), createdShip.getY());
+        createdShip.moveTo(createdShip.getX(), createdShip.getY());
     }
 
     public void runShips() {
@@ -127,7 +133,7 @@ public class Levelbuilder
         }
     }
     
-    public Schiff getShip(Schiffposition ship) {
+    public Schiff getShip(Schiffposition ship) { //->Optional ??
         if (ship.getType().equals("Cruiser")) {
             return cruiser.get(ship.getArrayIndex());
         }
@@ -261,23 +267,65 @@ public class Levelbuilder
         return positions;
     }
     
-    public void saveStageToFile(String file) {
-        //inputDialog
-        for(int i = 0; i < shipPositions.size(); i++) {
+    public void saveStageToFile() {
+        view.keyBufferDelete();
+        
+        String levelNum = Tools.inputDialog("In welchem Level soll das Layout gespeichert werden?");
+        if (levelNum == null) {return;}
+        String file = "levels/" + levelNum + ".txt";
+        
+        int stage = Integer.parseInt(Tools.inputDialog("Als welche Stage?"));
+        
+        String levelData = "";
+        levelData += "//Stage " + stage + "\n";
+        
+        //Prep-ing
+        ArrayList<String> usedTypes= new ArrayList<>();
+        for(int j = 0; j < shipPositions.size(); j++) {
+            if (usedTypes.contains(shipPositions.get(j).getType())) {continue;}
             
+            String type = shipPositions.get(j).getType();
+            int amountOfShips = 0;
+            List<String> xPositions = new ArrayList<>();
+            List<String> yPositions = new ArrayList<>();
+            
+            for(int i = 0; i < shipPositions.size(); i++) {
+                if (shipPositions.get(i).getType() != type) {continue;}
+                
+                amountOfShips++;
+                xPositions.add(shipPositions.get(i).getX() + "");
+                yPositions.add(shipPositions.get(i).getY() + "");
+            }
+            
+            levelData += type + ";" + amountOfShips + ";" + String.join(",", xPositions) + ";" + String.join(",", yPositions) + "\n";
+            usedTypes.add(type);
+        }
+        levelData += "//Stage " + stage;
+        
+        //Writing
+        if (!StringFileTools.fileExists(file)) {
+            StringFileTools.writeInFile(file, levelData);
+            return;
         }
         
-        //if (!StringFileTools.fileExists(file)) {
-            StringFileTools.writeInFile(file, "");
-        //}
+        StringBuilder fileLevelData = new StringBuilder(StringFileTools.loadFileInString(file));
         
-        
-        /*
-         * if File does not exist -> new file -> write line
-         * if File does exist -> 
-         *  if Stage does not exist -> new //Stage -> write line
-         *  if Stage does exist -> overwrite the file
-         *      
-         */
+        if (fileLevelData.indexOf("//Stage " + stage) < 0) {
+            for(int i = stage-1; i > 0; i--) {
+                if (fileLevelData.indexOf("Stage " + i) < 0) {continue;}
+                fileLevelData.insert(
+                    fileLevelData.lastIndexOf("//Stage " + i) + ("//Stage " + i).length(),  //Start
+                    "\n\n" + levelData //Content
+                );
+                break;
+            }
+        } else {
+            fileLevelData.replace(
+                fileLevelData.indexOf("//Stage " + stage),  //Start
+                fileLevelData.lastIndexOf("//Stage " + stage) + ("//Stage " + stage).length(), //Stopp
+                levelData //Content
+            );
+        }
+        StringFileTools.writeInFile(file, fileLevelData.toString());
     }
 }
