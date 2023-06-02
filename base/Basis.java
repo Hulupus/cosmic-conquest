@@ -23,4 +23,13 @@ public class Basis{
         shipBay = new ShipBay();
 
     }
+    
+    public void BaseRun(){
+        while (!Levelgestartet?){
+            if (ShipBay.clicked)
+            if (Laboratory.clicked()){
+                screenmanager.openscreen(screen3Labor);
+            }
+        }
+    }
 }

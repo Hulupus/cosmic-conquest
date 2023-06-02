@@ -1,4 +1,6 @@
 package base;
+
+import sas.*;
 /**
  * Beschreiben Sie hier die Klasse Laboratory.
  * 
@@ -12,4 +14,6 @@ public class Laboratory extends Building
     {
         
     }
+    
+    
 }
