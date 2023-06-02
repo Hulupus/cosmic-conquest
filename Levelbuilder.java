@@ -59,6 +59,7 @@ public class Levelbuilder
             
             if (view.keyPressed('b')) {
                 bomber.add(new Bomber(30, 30));
+                bomber.get(bomber.size()-1).setVeFlight(1);
                 shipPositions.add(new Schiffposition("Bomber", bomber.size()-1, 30, 30));
                 moveShip(bomber.get(bomber.size()-1), shipPositions.size()-1);
             }
