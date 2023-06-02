@@ -11,5 +11,5 @@ comment4.target=void\ letCruiserMove()
 comment5.params=
 comment5.target=void\ letBomberMove()
 comment6.params=stageShips
-comment6.target=void\ openNextStage(java.util.ArrayList)
+comment6.target=void\ openStage(java.util.ArrayList)
 numComments=7

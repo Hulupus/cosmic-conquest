@@ -67,6 +67,22 @@ public class Level
         return positions;
     }
     
+    public boolean isCleared() {
+        return true;
+    }
+    
+    public boolean isStageCleared(int clearedEnemies) {
+        return stages.get(activeStage).size() == clearedEnemies;
+    }
+    
+    public int getActiveStage() {
+        return activeStage;
+    }
+    
+    public void setActiveStage(int activeStage) {
+        this.activeStage = activeStage;
+    }
+    
     /*
      * Sicherheiten einprogrammieren?
      * 

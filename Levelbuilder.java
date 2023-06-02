@@ -99,6 +99,10 @@ public class Levelbuilder
             if (view.keyLeftPressed()) {
                 createdShip.move(270);
             }
+            /*
+             * Delete Ship
+             * -> return;
+             */
             view.wait(3);
         }
         
@@ -108,8 +112,7 @@ public class Levelbuilder
 
     public void runShips() {
         modeStatus.setText("Running");
-        modeStatus.setFontColor(Color.GREEN);
-        
+        modeStatus.setFontColor(Color.GREEN);        
         view.keyBufferDelete();
         
         while (!view.keyPressed('r')) {
@@ -127,6 +130,9 @@ public class Levelbuilder
         resetShips();
     }
     
+    /**
+     * Diese Methode bewegt die gespeicherten Schiffe zurück zu ihren Positionen.
+     */
     public void resetShips()
     {
         for (int i = 0; i < shipPositions.size(); i++) {
@@ -147,8 +153,8 @@ public class Levelbuilder
     public void editShipPositions() {
         modeStatus.setText("Editing");
         modeStatus.setFontColor(Color.PINK);
-        
         view.keyBufferDelete();
+        
         int chosenShip = 0;
         int time = 0;
 
@@ -193,11 +199,13 @@ public class Levelbuilder
         view.keyBufferDelete();
     }
     
+    /**
+     * Diese Methode erstellt Schiffe 
+     */
     public void loadSavedStage() {
         if (Tools.confirmDialog("Soll ein Level geladen werden?") == 1) {return;}
         
         String chosenFile;
-        
         do {
             chosenFile = Tools.inputDialog("Welche Datei soll geladen werden?");
             if (chosenFile == null) {
@@ -223,8 +231,8 @@ public class Levelbuilder
                 String[] shipGroup = levelConfig[i].split(";");
 
                 int amountOfShips = Integer.parseInt(shipGroup[1]);
-                int[] xPositions = turnStringToPositions(shipGroup[2], amountOfShips);
-                int[] yPositions = turnStringToPositions(shipGroup[3], amountOfShips);
+                int[] xPositions = turnStringToPositions(shipGroup[2], amountOfShips, 0);
+                int[] yPositions = turnStringToPositions(shipGroup[3], amountOfShips, 800);
                 
                 for (int j = 0; j < amountOfShips; j++) {
                     int arrIndex = 0;
@@ -249,12 +257,12 @@ public class Levelbuilder
         }
     }
     
-    private int[] turnStringToPositions(String strPositions, int amountOfPositions) {
+    private int[] turnStringToPositions(String strPositions, int amountOfPositions, int offset) {
         int[] positions = new int[amountOfPositions];
         if (strPositions.contains(",")) {
             String[] arrayPos = strPositions.split(",");
             for (int i = 0; i < amountOfPositions; i++) {
-                positions[i] = Integer.parseInt(arrayPos[i]);
+                positions[i] = Integer.parseInt(arrayPos[i]) + offset;
             }
         } else if (strPositions.contains("::")) {
             String[] intervallPos = strPositions.split("::");
@@ -262,17 +270,19 @@ public class Levelbuilder
                 positions[i] = Tools.randomNumber(
                     Integer.parseInt(intervallPos[0]), 
                     Integer.parseInt(intervallPos[1])
-                );
+                ) + offset;
             }
         }
         return positions;
     }
     
     public void saveStageToFile() {
+        modeStatus.setText("Saving");
+        modeStatus.setFontColor(Color.CYAN);
         view.keyBufferDelete();
         
         String levelNum = Tools.inputDialog("In welchem Level soll das Layout gespeichert werden?");
-        if (levelNum == null) {return;}
+        if (levelNum == null) {return;} 
         String file = "levels/" + levelNum + ".txt";
         
         int stage = Integer.parseInt(Tools.inputDialog("Als welche Stage?"));
@@ -295,7 +305,7 @@ public class Levelbuilder
                 
                 amountOfShips++;
                 xPositions.add(shipPositions.get(i).getX() + "");
-                yPositions.add(shipPositions.get(i).getY() + "");
+                yPositions.add(shipPositions.get(i).getY() - 800 + "");
             }
             
             levelData += type + ";" + amountOfShips + ";" + String.join(",", xPositions) + ";" + String.join(",", yPositions) + "\n";
@@ -312,14 +322,16 @@ public class Levelbuilder
         StringBuilder fileLevelData = new StringBuilder(StringFileTools.loadFileInString(file));
         
         if (fileLevelData.indexOf("//Stage " + stage) < 0) {
+            int insertionIndex = 0;
             for(int i = stage-1; i > 0; i--) {
                 if (fileLevelData.indexOf("Stage " + i) < 0) {continue;}
-                fileLevelData.insert(
-                    fileLevelData.lastIndexOf("//Stage " + i) + ("//Stage " + i).length(),  //Start
-                    "\n\n" + levelData //Content
-                );
+                insertionIndex = fileLevelData.lastIndexOf("//Stage " + i) + ("//Stage " + i).length() + 4;
                 break;
             }
+            fileLevelData.insert(
+                insertionIndex,  //Start
+                levelData + "\n\n" //Content
+            );
         } else {
             fileLevelData.replace(
                 fileLevelData.indexOf("//Stage " + stage),  //Start

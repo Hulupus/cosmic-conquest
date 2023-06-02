@@ -44,7 +44,7 @@ public class Lebensanzeige
         }
     }
     
-    // public int getAmountHearts() {
-        // return currentAmountOfHearts;
-    // }
+    public int getAmountOfHearts() {
+        return currentAmountOfHearts;
+    }
 }

@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=void\ addHeart()
 comment4.params=startingHearts
 comment4.target=void\ resetHeartsTo(int)
-numComments=5
+comment5.params=
+comment5.target=int\ getAmountOfHearts()
+numComments=6

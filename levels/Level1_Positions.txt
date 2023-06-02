@@ -1,6 +1,0 @@
-//Stage 1
-Cruiser,{75,195,315,435,555,675},{-150;-50}
-
-{w1; w2} => Intervall
-{s1, s2} => Liste
-falls beide Liste: beide gleich groß
