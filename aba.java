@@ -11,7 +11,7 @@ import ships.*;
 public class aba
 {
     private View view;
-    private Squasher b;
+    private Blockaderunner b;
 
     /**
      * Konstruktor für Objekte der Klasse aba
@@ -19,7 +19,7 @@ public class aba
     public aba()
     {
         view = new View(800, 800);
-        b = new Squasher(-10, 0);
+        b = new Blockaderunner(0, 0);
         move();
         // String a = StringFileTools.loadFileInString("levels/level1.txt");
         // System.out.print("a" + "\n" + "as");
