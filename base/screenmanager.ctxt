@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=screenmanager
+comment1.params=
+comment1.target=screenmanager()
+comment2.params=screen
+comment2.target=void\ openscreen(sas.Picture)
+comment3.params=
+comment3.target=void\ closeAll()
+numComments=4

@@ -1,15 +1,17 @@
 #BlueJ class context
 comment0.target=MitGeschuetz
-comment1.params=type\ laserCount\ x\ y\ width\ height
-comment1.target=MitGeschuetz(java.lang.String,\ int,\ int,\ int,\ int,\ int)
+comment1.params=type\ laserCount\ x\ y\ width\ height\ properties
+comment1.target=MitGeschuetz(java.lang.String,\ int,\ int,\ int,\ int,\ int,\ double[])
 comment2.params=
 comment2.target=void\ schie\u00DFen()
 comment3.params=
 comment3.target=void\ bewegeLaser()
-comment4.params=
-comment4.target=boolean\ canFire()
+comment4.params=ship
+comment4.target=boolean\ collides(Schiff)
 comment5.params=
-comment5.target=void\ addCooldownTime()
-comment6.params=newPos
-comment6.target=void\ setFirePosition(int)
-numComments=7
+comment5.target=boolean\ canFire()
+comment6.params=
+comment6.target=void\ addCooldownTime()
+comment7.params=newPos
+comment7.target=void\ setFirePosition(int)
+numComments=8

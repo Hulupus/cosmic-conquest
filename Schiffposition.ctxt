@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Schiffposition
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Schiffposition.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=shipType\ arrayIndex\ xPosition\ yPosition
+comment1.target=Schiffposition(java.lang.String,\ int,\ int,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getType()
+comment2.text=Getter\ und\ Setter\ ******
+comment3.params=
+comment3.target=int\ getArrayIndex()
+comment4.params=
+comment4.target=int\ getX()
+comment5.params=
+comment5.target=int\ getY()
+comment6.params=newXPos\ newYPos
+comment6.target=void\ setPosition(int,\ int)
+numComments=7

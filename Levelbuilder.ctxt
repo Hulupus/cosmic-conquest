@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Levelbuilder
+comment1.params=
+comment1.target=Levelbuilder()
+comment10.params=
+comment10.target=void\ saveStageToFile()
+comment2.params=
+comment2.target=void\ startBuilding()
+comment3.params=createdShip\ arrayIndex
+comment3.target=void\ moveShip(ships.Schiff,\ int)
+comment4.params=
+comment4.target=void\ runShips()
+comment5.params=
+comment5.target=void\ resetShips()
+comment6.params=ship
+comment6.target=ships.Schiff\ getShip(Schiffposition)
+comment7.params=
+comment7.target=void\ editShipPositions()
+comment8.params=
+comment8.target=void\ loadSavedStage()
+comment9.params=strPositions\ amountOfPositions
+comment9.target=int[]\ turnStringToPositions(java.lang.String,\ int)
+numComments=11

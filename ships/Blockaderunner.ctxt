@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=Bomber
+comment0.target=Blockaderunner
 comment1.params=x\ y
-comment1.target=Bomber(int,\ int)
+comment1.target=Blockaderunner(int,\ int)
 comment2.params=
 comment2.target=void\ move()
 numComments=3

@@ -1,3 +1,10 @@
 #BlueJ class context
 comment0.target=Level
-numComments=1
+comment1.params=levelNummer
+comment1.target=Level(int)
+comment2.params=strPositions\ amountOfPositions
+comment2.target=int[]\ turnStringToPositions(java.lang.String,\ int)
+comment3.params=
+comment3.target=java.util.ArrayList\ getEnemies()
+comment3.text=\r\n\ Config\:\r\n\ 1\:\ Type\r\n\ 2\:\ Amount\r\n\ 3\:\ x\r\n\ 4\:\ y\r\n\ \ ;\ \ Coordinates\ (as\ long\ as\ amount)\ \=>\ Integer.parseInt\r\n\ \ \:\:\ Intervall\ (only\ two\ numbers)\ \ \ \ \=>\ Tools.random\r\n
+numComments=4

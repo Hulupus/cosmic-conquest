@@ -1,16 +1,12 @@
 #BlueJ class context
 comment0.target=Lebensanzeige
 comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Lebensanzeige.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
-comment1.params=lives\ mxLives
-comment1.target=Lebensanzeige(int,\ int)
+comment1.params=startingHearts
+comment1.target=Lebensanzeige(int)
 comment2.params=
 comment2.target=void\ removeHeart()
 comment3.params=
 comment3.target=void\ addHeart()
-comment4.params=
-comment4.target=void\ resetHearts()
-comment5.params=
-comment5.target=int\ getAmountHearts()
-comment6.params=x\ y
-comment6.target=void\ moveto(double,\ double)
-numComments=7
+comment4.params=startingHearts
+comment4.target=void\ resetHeartsTo(int)
+numComments=5
