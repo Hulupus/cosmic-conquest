@@ -290,7 +290,7 @@ public class Levelbuilder
             List<String> yPositions = new ArrayList<>();
             
             for(int i = 0; i < shipPositions.size(); i++) {
-                if (shipPositions.get(i).getType() != type) {continue;}
+                if (!shipPositions.get(i).getType().equals(type)) {continue;}
                 
                 amountOfShips++;
                 xPositions.add(shipPositions.get(i).getX() + "");

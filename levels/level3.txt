@@ -8,7 +8,6 @@ Bomber;2;126,335;90,78
 //Stage 2
 
 //Stage 3
-Cruiser;2;30,264;30,29
-Bomber;2;126,335;90,78
-**Bug: not recognising that layout has changed
+Cruiser;3;30,264,106;30,29,308
+Bomber;4;126,335,242,398;90,78,212,181
 //Stage 3
