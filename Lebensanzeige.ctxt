@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Lebensanzeige
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Lebensanzeige.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
 comment1.params=startingHearts
 comment1.target=Lebensanzeige(int)
 comment2.params=

@@ -325,12 +325,12 @@ public class Levelbuilder
             int insertionIndex = 0;
             for(int i = stage-1; i > 0; i--) {
                 if (fileLevelData.indexOf("Stage " + i) < 0) {continue;}
-                insertionIndex = fileLevelData.lastIndexOf("//Stage " + i) + ("//Stage " + i).length() + 4;
+                insertionIndex = fileLevelData.lastIndexOf("//Stage " + i) + ("//Stage " + i).length();
                 break;
             }
             fileLevelData.insert(
-                insertionIndex,  //Start
-                levelData + "\n\n" //Content
+                insertionIndex,
+                insertionIndex == 0 ? levelData+"\n\n" : "\n\n"+levelData
             );
         } else {
             fileLevelData.replace(

@@ -1,14 +1,9 @@
 import sas.*;
 import java.util.ArrayList;
-/**
- * Beschreiben Sie hier die Klasse Lebensanzeige.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
+
 public class Lebensanzeige
 {
-    private static final int MAX_HEARTS = 10;
+    private static final int MAX_HEARTS = 10; //const -> config file ??
     
     private ArrayList<Picture> hearts;
     private int currentAmountOfHearts;
