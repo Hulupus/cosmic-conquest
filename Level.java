@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Level
 {
-    private ArrayList<ArrayList<Schiffposition>>stages;
+    private ArrayList<ArrayList<Schiffposition>> stages;
     private int activeStage = 0; // oder -1?
 
     public Level(int levelNummer) {
@@ -83,6 +83,10 @@ public class Level
         this.activeStage = activeStage;
     }
     
+    public ArrayList<Schiffposition> getEnemies() {
+        return stages.get(0);
+    }
+    
     /*
      * Sicherheiten einprogrammieren?
      * 
@@ -98,6 +102,7 @@ public class Level
      *  ;  Coordinates (as long as amount) => Integer.parseInt
      *  :: Intervall (only two numbers)    => Tools.random
      */
+    
     // public void openNextStage(){
 
     // }
@@ -109,9 +114,7 @@ public class Level
         // return false;
     // }
 
-    public ArrayList<Schiffposition> getEnemies() {
-        return stages.get(0);
-    }
+    
     // // public boolean stagezuende(){
     // // if (/*alle Schiffe hidden/nicht aktiv*/){
     // // return true;

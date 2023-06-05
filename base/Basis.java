@@ -25,11 +25,11 @@ public class Basis{
     }
     
     public void BaseRun(){
-        while (!Levelgestartet?){
-            if (ShipBay.clicked)
-            if (Laboratory.clicked()){
-                screenmanager.openscreen(screen3Labor);
-            }
-        }
+        // while (!Levelgestartet?){
+            // if (ShipBay.clicked)
+            // if (Laboratory.clicked()){
+                // screenmanager.openscreen(screen3Labor);
+            // }
+        // }
     }
 }

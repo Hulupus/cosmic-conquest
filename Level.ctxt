@@ -14,5 +14,4 @@ comment6.params=activeStage
 comment6.target=void\ setActiveStage(int)
 comment7.params=
 comment7.target=java.util.ArrayList\ getEnemies()
-comment7.text=\r\n\ Config\:\r\n\ 1\:\ Type\r\n\ 2\:\ Amount\r\n\ 3\:\ x\r\n\ 4\:\ y\r\n\ \ ;\ \ Coordinates\ (as\ long\ as\ amount)\ \=>\ Integer.parseInt\r\n\ \ \:\:\ Intervall\ (only\ two\ numbers)\ \ \ \ \=>\ Tools.random\r\n
 numComments=8

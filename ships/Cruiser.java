@@ -4,7 +4,7 @@ import sas.*;
 
 public class Cruiser extends MitGeschuetz
 {
-    private static final int MAX_X_MOVE_DISTANZ = 50;
+    private int maxMoveDistance = 50; //const??
     
     private int moveDirection = 120;
     
@@ -14,7 +14,7 @@ public class Cruiser extends MitGeschuetz
     }
     
     public void move() {
-        if (Math.abs(getOriginX()-getX()) > MAX_X_MOVE_DISTANZ)  {
+        if (Math.abs(getOriginX()-getX()) > maxMoveDistance)  {
             moveDirection = -moveDirection;
         }
         super.move(moveDirection);

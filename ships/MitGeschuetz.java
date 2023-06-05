@@ -37,7 +37,6 @@ public class MitGeschuetz extends Schiff
     }
     
     public void schießen() {
-        boolean hasFired = false;
         for (int i = 0; i < lasers.length; i++) {
             if (!lasers[i].getHidden()) {continue;}
             lasers[i].moveTo(getX() + firePosition, getY());

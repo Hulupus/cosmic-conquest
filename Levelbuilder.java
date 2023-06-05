@@ -52,7 +52,7 @@ public class Levelbuilder
             
             if (view.keyPressed('c')) {
                 cruiser.add(new Cruiser(30, 30));
-                cruiser.get(cruiser.size()-1).setVeFlight(1);
+                cruiser.get(cruiser.size()-1).setVeFlight(1); // TODO: Reset to starting value
                 shipPositions.add(new Schiffposition("Cruiser", cruiser.size()-1, 30, 30));
                 moveShip(cruiser.get(cruiser.size()-1), shipPositions.size()-1);
             }
@@ -285,7 +285,9 @@ public class Levelbuilder
         if (levelNum == null) {return;} 
         String file = "levels/" + levelNum + ".txt";
         
+        
         int stage = Integer.parseInt(Tools.inputDialog("Als welche Stage?"));
+        //Break Kriterium einfügen
         
         String levelData = "";
         levelData += "//Stage " + stage + "\n";
