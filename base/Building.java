@@ -8,11 +8,11 @@ import sas.*;
  * @version (eine Versionsnummer oder ein Datum)
  */
 public class Building{
-    
     private Picture building;
+    private int building_degree;
     
-    public Building(){
-        
+    public Building(String pictureURL, int xPos, int yPos, int height, int width){
+        building = new Picture(xPos, yPos, height, width, pictureURL);
     }
 
     public Boolean clicked(){

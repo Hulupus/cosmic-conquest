@@ -1,17 +1,11 @@
 package base;
 
 import sas.*;
-/**
- * Beschreiben Sie hier die Klasse Laboratory.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
-public class Laboratory extends Building
-{
-    
-    public Laboratory()
+public class Laboratory extends Building{
+
+    public Laboratory(int pbuilding_degree)
     {
+        super("laboratory.png(WIP)", 400, 800, 20, 20);
         
     }
     
