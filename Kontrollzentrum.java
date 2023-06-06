@@ -65,9 +65,10 @@ public class Kontrollzentrum
     }
 
     public void starteSpiel() {
-        while (!startbutton.mouseClicked()) {
+        /*while (!startbutton.mouseClicked()) {
             view.wait(100);
-        }
+        }*/
+        view.wait(3000);
         
         titlescreen.setHidden(true);
         background.setHidden(false);
