@@ -1,6 +1,7 @@
 package base;
 
 import sas.*;
+// Hier kann man neue Upgrades herstellen
 public class Laboratory extends Building{
 
     public Laboratory(int pbuilding_degree)
