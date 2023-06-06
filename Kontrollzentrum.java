@@ -49,24 +49,19 @@ public class Kontrollzentrum
         bomber = new Bomber[6];
 
         for (int i = 0; i < cruiser.length; i++) {
-            cruiser[i] = new Cruiser(75 + i*120, 20);//Tools.randomNumber(-150, -50));
-            cruiser[i].toggleHidden(true);// activeEnemies.add(cruiser[i]);
+            cruiser[i] = new Cruiser(75 + i*120, 20);
+            cruiser[i].toggleHidden(true);
         }
         for (int i = 0; i < bomber.length; i++) {
-            bomber[i] = new Bomber(75 + i*120, 20);//Tools.randomNumber(-150, -50));
-            bomber[i].toggleHidden(true);// activeEnemies.add(cruiser[i]);
-        }       
-        // activeBomber = new ArrayList<>();
-        // for (int i = 0; i < 6; i++) {
-        // activeBomber.add(new Bomber(30 + 130*i, -40));
-        // }
-
+            bomber[i] = new Bomber(75 + i*120, 20);
+            bomber[i].toggleHidden(true);
+        }
+        
         titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
         mainShip = new PlayerShip();
 
         starteSpiel();
-
     }
 
     public void starteSpiel() {
@@ -90,7 +85,7 @@ public class Kontrollzentrum
     public void starteLevel() {
         clearedEnemies = 0;
         openStage(level.getEnemies());
-        while (leben.getAmountOfHearts() != 0) {//!level[0].) {
+        while (leben.getAmountOfHearts() != 0) {
             letCruiserMove();
             letBomberMove();
 
@@ -100,8 +95,12 @@ public class Kontrollzentrum
             
             if (level.isStageCleared(clearedEnemies)){
                 level.setActiveStage(level.getActiveStage()+1);
+                for (int i = 0; i < cruiser.length; i++) {
+                    cruiser[i].toggleActive(false);
+                }
                 if (level.isCleared()) {break;}
                 openStage(level.getEnemies());
+                clearedEnemies = 0;
             }
 
             view.wait(3);
@@ -151,52 +150,8 @@ public class Kontrollzentrum
         }
     }
             
-            
-    // public void zerstören (){
-    // Zerstörung durch MainShip
-    // for (int i = 0; i < enemies.length; i++) {
-    // if (mainShip.trifft(enemies[i])) {
-    // explosion.moveTo(enemies[i].getX()-5, enemies[i].getY()-5);
-    // explosion.setHidden(false);
-    // view.wait(5);
-    // enemies[i].toggleHidden(true);
-    // explosion.setHidden(true);
-    // speed += 0.09;
-    // hits++;
-    // }
-    // }
-    // Zerstörung durch Gegner
-    // for (int i = 0; i < enemies.length; i++) {
-    // if (enemies[i].trifft(mainShip)) {
-    // leben.removeHeart();
-    // }
-    // }
-    // }
-
-    // public void aendereStat(double[][] stats) {
-    // //Anzahl der stats, die verändert werden
-    // for (int i1 = 0; i1 < stats.length; i1++) {
-    // if (stats[i1][0] == 0) {
-    // for (int i2 = 0; i2 < stats[i1][1]; i2++) {
-    // leben.addHeart();            
-    // }
-    // } else if (stats[i1][0] == 1) {
-
-    // } else if (stats[i1][0] == 2) {
-
-    // } else if (stats[i1][0] == 3) {
-
-    // }
-    // }
-    // }
-
-    // public void enemyMoveTo(int i, int xPos, int yPos){
-    // enemies[i].moveTo(xPos, yPos);
-    // }
-
-    //Levelsystem
+    //Levelladen
     public void openStage(ArrayList<Schiffposition> stageShips){
-        System.out.println(stageShips);
         for (int i = 0; i < stageShips.size(); i++){
             if (stageShips.get(i).getType().equals("Cruiser")){
                 for (int j = 0;j < cruiser.length; j++){

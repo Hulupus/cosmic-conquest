@@ -28,9 +28,9 @@ public class Levelbuilder
     {
         view = new View(800, 800, "Levelbuilder Cosmic Conquest");
         
+        //Schiffe
         cruiser = new ArrayList<>();
         bomber = new ArrayList<>();
-        
         shipPositions = new ArrayList <>();
         
         //Status Text
@@ -131,7 +131,7 @@ public class Levelbuilder
     }
     
     /**
-     * Diese Methode bewegt die gespeicherten Schiffe zurück zu ihren Positionen.
+     * Diese Methode bewegt die gespeicherten Schiffe zurück zu ihren ursprünglichen Positionen.
      */
     public void resetShips()
     {
@@ -140,7 +140,7 @@ public class Levelbuilder
         }
     }
     
-    public Schiff getShip(Schiffposition ship) { //->Optional ??
+    public Schiff getShip(Schiffposition ship) { //->Optional<Schiff> ??
         if (ship.getType().equals("Cruiser")) {
             return cruiser.get(ship.getArrayIndex());
         }
@@ -200,7 +200,7 @@ public class Levelbuilder
     }
     
     /**
-     * Diese Methode erstellt Schiffe 
+     * 
      */
     public void loadSavedStage() {
         if (Tools.confirmDialog("Soll ein Level geladen werden?") == 1) {return;}

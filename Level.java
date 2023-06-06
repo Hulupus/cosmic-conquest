@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Level
 {
     private ArrayList<ArrayList<Schiffposition>> stages;
-    private int activeStage = 0; // oder -1?
+    private int activeStage = 0;
 
     public Level(int levelNummer) {
         stages = new ArrayList<>();
@@ -19,12 +19,13 @@ public class Level
 
         String[] levelConfig = StringFileTools.loadFileInStringArray(fileName);
         for (int i = 0; i < levelConfig.length; i++) {
+            //jump to stage
             if (!levelConfig[i].contains("//")) {
                 continue;
             }
             i++;
             
-            //begin reading all ships in line
+            //begin reading (all ships in line)
             ArrayList<Schiffposition> enemies = new ArrayList<>();
             while (!levelConfig[i].contains("//") && i < levelConfig.length) {
                 String[] shipGroup = levelConfig[i].split(";");
@@ -68,7 +69,7 @@ public class Level
     }
     
     public boolean isCleared() {
-        return true;
+        return activeStage == stages.size();
     }
     
     public boolean isStageCleared(int clearedEnemies) {
@@ -84,41 +85,18 @@ public class Level
     }
     
     public ArrayList<Schiffposition> getEnemies() {
-        return stages.get(0);
+        return stages.get(activeStage);
     }
     
-    /*
-     * Sicherheiten einprogrammieren?
-     * 
-     */
-    
     
     /*
-     * Config:
+     * Config of a level:
      * 1: Type
      * 2: Amount
      * 3: x
      * 4: y
      *  ;  Coordinates (as long as amount) => Integer.parseInt
-     *  :: Intervall (only two numbers)    => Tools.random
+     *  :: Intervall (only two numbers)    => Tools.randomNumber()
      */
     
-    // public void openNextStage(){
-
-    // }
-
-    // public boolean levelzuende(){
-        // // if (activeStage == stage.length){
-        // // return true;
-        // // }
-        // return false;
-    // }
-
-    
-    // // public boolean stagezuende(){
-    // // if (/*alle Schiffe hidden/nicht aktiv*/){
-    // // return true;
-    // // }
-    // // return false;
-    // }
 }
