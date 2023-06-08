@@ -13,7 +13,7 @@ public class screenmanager{
     }
     
     public void openscreen(Picture screen){
-        screen.setHidden(true);
+        openedscreen.setHidden(true);
         openedscreen = screen;
         screen.setHidden(false);
     }

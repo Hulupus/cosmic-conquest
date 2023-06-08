@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.awt.Color;
 
 import ships.*;
+import base.*;
 
 public class Kontrollzentrum
 {
     private View view;
 
+    private Base base;
+    
     //Hintergründe
     private Picture loadingscreen;
     private Picture titlescreen;
@@ -61,7 +64,9 @@ public class Kontrollzentrum
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
         mainShip = new PlayerShip();
 
-        starteSpiel();
+        base = new Base();
+        
+        //starteSpiel();
     }
 
     public void starteSpiel() {
@@ -172,6 +177,10 @@ public class Kontrollzentrum
             // // }
             // }
         }
+    }
+    
+    public boolean keyPressed(char key){
+        return view.keyPressed(key);
     }
 }
 

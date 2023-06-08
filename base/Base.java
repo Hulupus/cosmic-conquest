@@ -1,6 +1,10 @@
 package base; 
 
+import sas.*;
 public class Base{
+    private Picture base_background;
+    private Picture base_planet;
+    
     //Buildings
     private Laboratory labor;
     private ShipBay shipBay;
@@ -18,9 +22,11 @@ public class Base{
     
 
     public Base(){
+        base_background = new Picture (0, 0, 800, 800, "assets/base/Cosmic_Conquest_base_background.png");
+        base_planet = new Picture(-25, 475, 850, 800, "assets/base/Cosmic_Conquest_base_planet.png");
         //Buldings
-        labor = new Laboratory();
-        shipBay = new ShipBay();
+        // labor = new Laboratory();
+        // shipBay = new ShipBay();
 
     }
     
@@ -32,6 +38,15 @@ public class Base{
             if (Laboratory.clicked()){
                 screenmanager.openscreen(screen3Labor);
             }
+            turnPlanet();
+        }
+    }
+    
+    public void turnPlanet(){
+        if (Kontrollzentrum.keyPressed("q")){
+            base_planet.turn(400, 800, -1);
+        } else if(Kontrollzentrum.keyPressed("e")){
+            base_planet.turn(400, 800, 1);
         }
     }
 }
