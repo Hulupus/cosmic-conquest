@@ -51,6 +51,7 @@ public class Base{
     }
     
     public void build(String BuildingType){
-        
+        while()
+        getMouseX()
     }
 }
