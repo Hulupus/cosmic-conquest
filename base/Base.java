@@ -1,12 +1,11 @@
 package base; 
 
 import sas.*;
-import sum.kern.*;
 public class Base{
     private Picture base_planet;
     
     //Buildings
-    //private Laboratory labor;
+    private Laboratory labor;
     private ShipBay shipBay;
     
     //Material
@@ -26,8 +25,8 @@ public class Base{
         base_planet = new Picture(-25, 475, 850, 800, "assets/base/Cosmic_Conquest_base_planet.png");
         
         //Buldings
-        // labor = new Laboratory();
-        // shipBay = new ShipBay();
+        labor = new Laboratory();
+        shipBay = new ShipBay();
 
     }
     
@@ -44,16 +43,22 @@ public class Base{
     }
     
     public void turnPlanet(View view){
-        if (view.keyPressed('q')){
+        if (view.keyPressed('a')){
             base_planet.turn(400, 800, -1);
-        } else if(view.keyPressed('e')){
+        } else if(view.keyPressed('d')){
             base_planet.turn(400, 800, 1);
         }
     }
     
     public void build(String BuildingType, View view){
-        while(view.keyPressed('b')){
-            int MxPos = ;
-        }
+        
+        
+        // while(!view.keyPressed('b')){
+            // if (view.keyPressed('q')){
+                // .turn(400, 800, -1);
+            // } else if(view.keyPressed('e')){
+                // .turn(400, 800, 1);
+            // }
+        // }
     }
 }
