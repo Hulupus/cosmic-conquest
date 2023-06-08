@@ -1,6 +1,7 @@
 package base; 
 
 import sas.*;
+import sum.kern.*;
 public class Base{
     private Picture base_planet;
     
@@ -50,8 +51,9 @@ public class Base{
         }
     }
     
-    public void build(String BuildingType){
-        while()
-        getMouseX()
+    public void build(String BuildingType, View view){
+        while(view.keyPressed('b')){
+            int MxPos = ;
+        }
     }
 }
