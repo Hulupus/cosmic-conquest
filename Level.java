@@ -69,7 +69,6 @@ public class Level
     }
     
     public boolean isCleared() {
-        System.out.println(activeStage + ": " + stages.size());
         return activeStage == stages.size();
     }
     
