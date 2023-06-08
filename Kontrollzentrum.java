@@ -14,9 +14,7 @@ public class Kontrollzentrum
     private Base base;
     
     //Hintergründe
-    private Picture loadingscreen;
-    private Picture titlescreen;
-    private Picture background;
+    
 
     //Explosion
     private Picture explosion;
@@ -39,10 +37,7 @@ public class Kontrollzentrum
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
 
-        loadingscreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_loadingscreen.png");
-
-        background = new Picture(0, 0, 800, 800,  "assets/views/background.png");
-        background.setHidden(true);
+        
 
         explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         explosion.setHidden(true);
@@ -60,7 +55,6 @@ public class Kontrollzentrum
             bomber[i].toggleHidden(true);
         }
         
-        titlescreen = new Picture(0, 0, 800, 800, "assets/views/Cosmic_Conquest_titlescreen.png");
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
         mainShip = new PlayerShip();
 
@@ -75,8 +69,7 @@ public class Kontrollzentrum
         }*/
         view.wait(3000);
         
-        titlescreen.setHidden(true);
-        background.setHidden(false);
+        
         startbutton.setHidden(true);
         leben = new Lebensanzeige(3);
         

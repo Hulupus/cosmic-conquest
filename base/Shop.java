@@ -4,7 +4,7 @@ import sas.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class Shop extends Building
+public class Shop //extends Building
 {
     //gekaufte Items
     private ArrayList<Item> boughtItems;
