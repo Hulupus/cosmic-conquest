@@ -46,7 +46,7 @@ public class ScreenManager{
             case "baseMain" : 
                 return baseMain;
             default :
-                return null; //Optinal??
+                return null; //Optional??
         }
     }
     
