@@ -49,11 +49,5 @@ public class ScreenManager{
                 return null; //Optinal??
         }
     }
-    // public void openFirst(){
-        
-    // }
     
-    public void closeAll(){
-        //openedscreen.setHidden(true);
-    }
 }
