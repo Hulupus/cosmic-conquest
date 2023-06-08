@@ -32,12 +32,12 @@ public class Base{
     
     public void BaseRun(View view){
         while (true){
-            if (ShipBay.clicked()){
-                screenmanager.openscreen(screen2ShipBay);
-            }
-            if (Laboratory.clicked()){
-                screenmanager.openscreen(screen3Labor);
-            }
+            // if (ShipBay.clicked()){
+                // screenmanager.openscreen(screen2ShipBay);
+            // }
+            // if (Laboratory.clicked()){
+                // screenmanager.openscreen(screen3Labor);
+            // }
             turnPlanet(view);
         }
     }
