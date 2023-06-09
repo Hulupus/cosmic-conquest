@@ -12,7 +12,7 @@ public class Kontrollzentrum
     private View view;
 
     private Base base;
-    
+
     //Hintergründe
     private ScreenManager screenManager;    
 
@@ -31,12 +31,12 @@ public class Kontrollzentrum
     //private int activeLevel;
 
     private Level level;
-    
+
     private int clearedEnemies;
 
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
-        screenManager = new ScreenManager(view.getHeight(), view.getWidth());
+        screenManager = new ScreenManager(800, 800);
 
         // explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
         // explosion.setHidden(true);
@@ -53,12 +53,9 @@ public class Kontrollzentrum
             bomber[i] = new Bomber(75 + i*120, 20);
             bomber[i].toggleHidden(true);
         }
-        
-        
-        mainShip = new PlayerShip();
 
+        mainShip = new PlayerShip();
         //base = new Base();
-        
         screenManager.openScreen("titlescreen", view);
         starteSpiel();
     }
@@ -69,18 +66,17 @@ public class Kontrollzentrum
             view.wait(100);
         }
         startbutton.setHidden(true);
-        
+
         screenManager.openScreen("level", view);
-        
-        
+
         
         leben = new Lebensanzeige(3);
-        
-        for (int i = 0; i < 100; i++) {
+
+        for (int i = 0; i < 200; i++) {
             mainShip.move(0);
             view.wait(3);
         }
-        
+
         starteLevel();
     }
 
@@ -94,11 +90,12 @@ public class Kontrollzentrum
             mainShip.move(view);
             mainShip.bewegeLaser();
             mainShip.schießen(view);
-            
+
             if (level.isStageCleared(clearedEnemies)){
                 level.setActiveStage(level.getActiveStage()+1);
                 for (int i = 0; i < cruiser.length; i++) {
                     cruiser[i].toggleActive(false);
+                    bomber[i].toggleActive(false);
                 }
                 if (level.isCleared()) {break;}
                 openStage(level.getEnemies());
@@ -119,14 +116,14 @@ public class Kontrollzentrum
                 //add loot?
                 clearedEnemies++;
             }
-            
+
             cruiser[i].bewegeLaser();
             if (cruiser[i].getHidden()) {continue;}
             if (cruiser[i].getY() > 810) {
                 cruiser[i].toggleHidden(true);
                 clearedEnemies++;
             }
-            
+
             cruiser[i].move();
             cruiser[i].schießen();
         }
@@ -142,7 +139,7 @@ public class Kontrollzentrum
                 //add loot?
                 clearedEnemies++;
             } 
-            
+
             if (bomber[i].getHidden()) {continue;}
             if (bomber[i].getY() > 810) {
                 bomber[i].toggleHidden(true);
@@ -151,7 +148,7 @@ public class Kontrollzentrum
             bomber[i].move();
         }
     }
-            
+
     //Levelladen
     public void openStage(ArrayList<Schiffposition> stageShips){
         for (int i = 0; i < stageShips.size(); i++){
@@ -163,18 +160,18 @@ public class Kontrollzentrum
                     cruiser[j].toggleHidden(false);
                     break;
                 }
-            } 
-            // else if (stageShips.get(i).getType() == "Bomber"){
-            // // for (int k = 0;k > bomber.length; k++){
-            // // if (!bomber[k].getactive){
-            // // //bewge zu ausgelesener Pos
-            // // //(kopiere) in Array activeBomber
-            // // }
-            // // }
-            // }
+            } else if (stageShips.get(i).getType().equals("Bomber")) {
+                for (int j = 0;j < bomber.length; j++){
+                    if (bomber[j].getActive()){continue;}
+                    bomber[j].moveTo(stageShips.get(i).getX(), stageShips.get(i).getY());
+                    bomber[j].toggleActive(true);
+                    bomber[j].toggleHidden(false);
+                    break;
+                }
+            }
         }
     }
-    
+
     public boolean keyPressed(char key){
         return view.keyPressed(key);
     }

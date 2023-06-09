@@ -1,4 +1,5 @@
-import sas.*;
+import sas.Picture;
+import sas.View;
 
 public class ScreenManager{
     private Picture loading;

@@ -13,7 +13,7 @@ public class Lebensanzeige
         hearts = new ArrayList<>();
         currentAmountOfHearts = startingHearts;
         for (int i = 0; i < maxHearts; i++) {
-            hearts.add(new Picture(25*i+10, 760, 37, 30, "assets/views/Herz.png"));
+            hearts.add(new Picture(25*i+10, 600, 37, 30, "assets/views/Herz.png"));
             if (i > startingHearts-1) {
                 hearts.get(i).setHidden(true);
             }
