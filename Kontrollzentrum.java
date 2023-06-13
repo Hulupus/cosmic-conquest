@@ -55,16 +55,17 @@ public class Kontrollzentrum
         }
 
         mainShip = new PlayerShip();
-        //base = new Base();
+        // base = new Base();
+        // screenManager.openScreen("baseMain", view);
         screenManager.openScreen("titlescreen", view);
         starteSpiel();
     }
 
     public void starteSpiel() {
         startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
-        while (!startbutton.mouseClicked()) {
-            view.wait(100);
-        }
+        // while (!startbutton.mouseClicked()) {
+            // view.wait(100);
+        // }
         startbutton.setHidden(true);
 
         screenManager.openScreen("level", view);
@@ -90,6 +91,7 @@ public class Kontrollzentrum
             mainShip.move(view);
             mainShip.bewegeLaser();
             mainShip.schießen(view);
+            //base.turnPlanet(view);
 
             if (level.isStageCleared(clearedEnemies)){
                 level.setActiveStage(level.getActiveStage()+1);

@@ -22,7 +22,7 @@ public class Base{
     
 
     public Base(){
-        base_planet = new Picture(-25, 475, 850, 800, "assets/base/Cosmic_Conquest_base_planet.png");
+        base_planet = new Picture(-25, 475, 850, 850, "assets/views/base/Cosmic_Conquest_base_planet.png");
         
         //Buldings
         labor = new Laboratory();
@@ -44,9 +44,11 @@ public class Base{
     
     public void turnPlanet(View view){
         if (view.keyPressed('a')){
-            base_planet.turn(400, 800, -1);
+            base_planet.turn(400, 900, -0.2);
+            labor.turn(-0.2);
         } else if(view.keyPressed('d')){
-            base_planet.turn(400, 800, 1);
+            base_planet.turn(400, 900, 0.2);
+            labor.turn(-0.2);
         }
     }
     
