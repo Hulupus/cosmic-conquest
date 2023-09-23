@@ -2,7 +2,7 @@ package ships;
 
 import sas.*;
 
-public class Cruiser extends MitGeschuetz
+public class Cruiser extends Ship
 {
     private int maxMoveDistance = 50; //const??
     
@@ -10,21 +10,33 @@ public class Cruiser extends MitGeschuetz
     
     public Cruiser(int xPos, int yPos)
     {
-        super("cruiser", 20, xPos, yPos, 50, 50, new double[] {1, 0.3, 180, 3, 50/2});
+        super("cruiser", 
+            xPos, 
+            yPos, 
+            50, 
+            50, 
+            new double[] {1, 0.3}, 
+            new Weapon(
+                180,
+                1,
+                3
+                //50/2
+            )
+        );
     }
     
-    public void move() {
-        if (Math.abs(getOriginX()-getX()) > maxMoveDistance)  {
-            moveDirection = -moveDirection;
-        }
-        super.move(moveDirection);
-    }
+    // public void move() {
+        // if (Math.abs(getOriginX()-getX()) > maxMoveDistance)  {
+            // moveDirection = -moveDirection;
+        // }
+        // super.move(moveDirection);
+    // }
     
-    public void schießen() {
-        if (canFire() && Tools.randomNumber(0, 600) == 9) {
-            super.schießen();
-        } else {
-            addCooldownTime();
-        }
-    }
+    // public void schießen() {
+        // if (canFire() && Tools.randomNumber(0, 600) == 9) {
+            // super.schießen();
+        // } else {
+            // addCooldownTime();
+        // }
+    // }
 }

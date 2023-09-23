@@ -3,21 +3,27 @@ package ships;
 import sas.Picture;
 import sas.View;
 
-public class PlayerShip extends MitGeschuetz
+public class PlayerShip extends Ship
 {
     
     public PlayerShip()
     {
-        super("player", 20, 365, 800, 70, 70, new double[] {3, 1, 180, 3, 70/2});
+        super(
+            "player", 
+            365, 
+            800, 
+            70, 
+            70, 
+            new double[] {3, 1},
+            new Weapon(
+                120,
+                6/5,
+                2
+            )
+        );
     }
     
     public void move(View v) {
-        // if (v.keyPressed('w') && getX() >= 0) {
-            // super.move(0);
-        // }
-        // if (v.keyPressed('s') && getX() <= v.getWidth() - 70) {
-            // super.move(180);
-        // }
         if (v.keyPressed('a') && getX() >= 0) {
             super.move(270);
         }
@@ -26,12 +32,11 @@ public class PlayerShip extends MitGeschuetz
         }
     }
     
-    public void schießen(View v) {
-        if (v.keyPressed(' ') && canFire()) {
-            super.schießen();
-        } else {
-            addCooldownTime();
+    public void fire(View v) {
+        if (v.keyPressed(' ')) {
+            super.fire();
+            return;
         }
+        weapon.moveLasers();
     }
-    
 }
