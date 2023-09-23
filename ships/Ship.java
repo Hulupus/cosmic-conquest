@@ -9,18 +9,20 @@ public abstract class Ship
     protected Weapon weapon;
 
     //Artribute:
+    private String type;
     private int lives;
     private double vFlight; //Speed of Ship
     private int originXPosition; //xPos to allow centered left and right movement
 
     public Ship(String type, int x,int y, int width, int height, double[] properties, Weapon weapon)
     {
-        ship = new Picture(x, y, width, height, "assets/ships/Space_Ship_" + type + ".png");
-        lives = (int) properties[0];
-        vFlight = properties[1];
-        originXPosition = x;
+        this.ship = new Picture(x, y, width, height, "assets/ships/Space_Ship_" + type + ".png");
+        this.lives = (int) properties[0];
+        this.vFlight = properties[1];
+        this.originXPosition = x;
+        this.type = type;
         this.weapon = weapon;
-        this.weapon.setAttachedShip(this);
+        this.weapon.setAttachedShip(this, 5);
     }
 
     public void move(double dir) {
@@ -48,6 +50,10 @@ public abstract class Ship
     }
 
     /* ****** Getter und Setter ****** */
+    public String getType() {
+        return type;
+    }
+    
     protected Picture getShip() {
         return ship;
     }
@@ -63,7 +69,7 @@ public abstract class Ship
     public int getY() {
         return (int) ship.getShapeY();
     }
-
+    
     public int getLives() {
         return lives;
     }
@@ -80,19 +86,11 @@ public abstract class Ship
         vFlight = newVelocity;
     }
 
-    // public boolean getActive() {
-    // return isActive;
-    // }
-
-    // public void toggleActive(boolean active) {
-    // isActive = active;
-    // }
-
     public boolean getHidden() {
         return ship.getHidden();    
     }
 
-    public void toggleHidden(boolean hidden) {
+    public void setHidden(boolean hidden) {
         ship.setHidden(hidden);
     }
 }

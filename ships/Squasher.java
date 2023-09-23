@@ -1,10 +1,10 @@
 package ships;
 
-public class Squasher extends Schiff
+public class Squasher extends Ship
 {
     public Squasher(int x, int y)
     {
-        super("bomber", x, y, 70, 70, new double[] {1, 0.5});
+        super("bomber", x, y, 70, 70, new double[] {1, 0.5}, null);
     }
     
     public void move() {

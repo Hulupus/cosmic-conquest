@@ -26,16 +26,12 @@ public class Weapon
         lasers = new Queue<>();
         firedLasers = new List<>();
         firePositions = new double[] { (25/2) };
-        Picture laser = new Picture(55,700,7,25,"assets/ships/Laser_green.png");
-        laser.setDirection(0);
-        lasers.enqueue(laser);
     }
     
     public void fire()
     {
         if (lasers.isEmpty()) return;
         if (Math.round(Math.random() * failureRate) == 0) {
-            System.out.println("failed");
             cooldown = 0;
             return;
         }
@@ -47,7 +43,8 @@ public class Weapon
         lasers.dequeue();
     }
     
-    public void moveLasers() {
+    public void moveLasers()
+    {
         firedLasers.toFirst();
         while (firedLasers.hasAccess()) {
             firedLasers.getContent().move(laserSpeed);
@@ -58,6 +55,7 @@ public class Weapon
             firedLasers.next();
         }
     }
+    
     public boolean canFire () {
         if (cooldown < cooldownTime) {return false;}
         return true;
@@ -68,7 +66,18 @@ public class Weapon
     }
     
     /* ****************** Getter and Setter ****************** */
-    public void setAttachedShip(Ship attachedShip) {
+    public void setAttachedShip(Ship attachedShip, int laserCount) {
         this.attachedShip = attachedShip;
+        String image = "assets/ships/Laser_red.png";
+        int direction = 180;
+        if (this.attachedShip.getType() == "player") {
+            image = "assets/ships/Laser_green.png";
+            direction = 0;
+        }
+        for (int i = 0; i < laserCount; i++) {
+            Picture laser = new Picture(55, 700, 7, 25, image);
+            laser.setDirection(direction);
+            lasers.enqueue(laser);
+        }
     }
 }

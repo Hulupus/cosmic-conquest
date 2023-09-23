@@ -1,6 +1,6 @@
 package ships;
 
-public class Duster extends Schiff
+public class Duster extends Ship
 {
     private static final int MAX_X_MOVE_DISTANZ = 70;
     
@@ -8,7 +8,7 @@ public class Duster extends Schiff
     
     public Duster(int x, int y)
     {
-        super("cruiser", x, y, 40, 40, new double[] {1, 0.1});
+        super("cruiser", x, y, 40, 40, new double[] {1, 0.1}, null);
     }
     
     public void move() {
