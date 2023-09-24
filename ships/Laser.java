@@ -10,8 +10,8 @@ public class Laser extends Projectile
             7, 
             25, 
             "assets/ships/Laser_" + color + ".png",
-            color == "green" ? 0 : 180,
-            color == "green" ? 2 : 3
+            color.equals("green") ? 2 : 3,
+            color.equals("green") ? 0 : 180
         );
     }
 }

@@ -17,9 +17,10 @@ public class Cruiser extends Ship
             50, 
             new double[] {1, 0.3}, 
             new Weapon(
+                new Laser("red"),
+                5,
                 180,
-                1,
-                3
+                1
                 //50/2
             )
         );

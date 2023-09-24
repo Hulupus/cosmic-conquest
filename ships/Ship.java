@@ -22,7 +22,7 @@ public abstract class Ship
         this.originXPosition = x;
         this.type = type;
         this.weapon = weapon;
-        this.weapon.setAttachedShip(this, 5);
+        this.weapon.setAttachedShip(this);
     }
 
     public void move(double dir) {

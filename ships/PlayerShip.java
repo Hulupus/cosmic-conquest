@@ -16,9 +16,10 @@ public class PlayerShip extends Ship
             70, 
             new double[] {3, 1},
             new Weapon(
+                new Laser("green"),
+                5,
                 120,
-                60,
-                2
+                60
             )
         );
     }

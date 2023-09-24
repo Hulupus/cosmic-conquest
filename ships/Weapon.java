@@ -2,12 +2,11 @@ package ships;
 
 import util.Queue;
 import util.List;
-import sas.Picture;
 
 public class Weapon
 {
-    private Queue<Picture> lasers;
-    private List<Picture> firedLasers;
+    private Queue<Projectile> lasers;
+    private List<Projectile> firedLasers;
     private double[] firePositions;
     private int cooldown;
     
@@ -16,17 +15,22 @@ public class Weapon
     //Attributes
     private double cooldownTime;
     private double failureRate;
-    private double laserSpeed;
     
-    public Weapon(double cooldownTime, double failureRate, double laserSpeed)
+    public Weapon(Projectile projectile, int projectileCount, double cooldownTime, double failureRate)
     {
         this.attachedShip = attachedShip;
         this.cooldownTime = cooldownTime;
         this.cooldown = (int) cooldownTime;
-        this.laserSpeed = laserSpeed;
         this.failureRate = failureRate;
-        lasers = new Queue<>();
+        
+        this.lasers = new Queue<>();
+        this.lasers.enqueue(projectile);
+        for (int i = 1; i < projectileCount; i++) {
+            this.lasers.enqueue(projectile.clone());
+        }
+        
         firedLasers = new List<>();
+        
         firePositions = new double[] { (25/2) };
     }
     
@@ -38,7 +42,6 @@ public class Weapon
             return;
         }
         lasers.front().moveTo(attachedShip.getX() + firePositions[0], attachedShip.getY());
-        lasers.front().setHidden(false);
         cooldown = 0;
         
         firedLasers.append(lasers.front());
@@ -49,9 +52,10 @@ public class Weapon
     {
         firedLasers.toFirst();
         while (firedLasers.hasAccess()) {
-            firedLasers.getContent().move(laserSpeed);
-            if (firedLasers.getContent().getShapeY() < -20 || firedLasers.getContent().getShapeY() > 820) {
+            firedLasers.getContent().move();
+            if (firedLasers.getContent().getY() < -20 || firedLasers.getContent().getY() > 820) {
                 lasers.enqueue(firedLasers.getContent());
+                firedLasers.getContent().setHidden(true);
                 firedLasers.remove();
             }
             firedLasers.next();
@@ -68,18 +72,7 @@ public class Weapon
     }
     
     /* ****************** Getter and Setter ****************** */
-    public void setAttachedShip(Ship attachedShip, int laserCount) {
+    public void setAttachedShip(Ship attachedShip) {
         this.attachedShip = attachedShip;
-        String image = "assets/ships/Laser_red.png";
-        int direction = 180;
-        if (this.attachedShip.getType() == "player") {
-            image = "assets/ships/Laser_green.png";
-            direction = 0;
-        }
-        for (int i = 0; i < laserCount; i++) {
-            Picture laser = new Picture(55, 700, 7, 25, image);
-            laser.setDirection(direction);
-            lasers.enqueue(laser);
-        }
     }
 }
