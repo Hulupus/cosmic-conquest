@@ -1,5 +1,7 @@
 package ships;
 
+import util.Queue;
+import util.List;
 import sas.Picture;
 
 public class Weapon

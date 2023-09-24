@@ -1,4 +1,4 @@
-package ships;
+package util;
 
 public class List<ContentType> {
 

@@ -1,4 +1,4 @@
-package ships;
+package util;
 
 /**
  * <p>
