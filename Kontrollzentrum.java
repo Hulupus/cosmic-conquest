@@ -48,14 +48,14 @@ public class Kontrollzentrum
         // screenManager.openScreen("baseMain", view);
         screenManager.openScreen("level", view);
         for (int i = 0; i < 100; i++) {
-            mainShip.move(0);
+            mainShip.move();
             view.wait(3);
         }
         //starteSpiel();
         Ship cruiser = new Cruiser(40, 40);
         while (true) {
             mainShip.move(view);
-            cruiser.move(180);
+            cruiser.move();
             cruiser.fire();
             mainShip.fire(view);
             view.wait(3);

@@ -14,7 +14,7 @@ public class PlayerShip extends Ship
             800, 
             70, 
             70, 
-            new double[] {3, 1},
+            new double[] {3, 1, 0, 0},
             new Weapon(
                 new Laser("green"),
                 5,
@@ -26,10 +26,12 @@ public class PlayerShip extends Ship
     
     public void move(View v) {
         if (v.keyPressed('a') && getX() >= 0) {
-            super.move(270);
+            super.setFlightDirection(270);
+            super.move();
         }
         if (v.keyPressed('d') && getX() <= v.getWidth() - 70) {
-            super.move(90);
+            super.setFlightDirection(90);
+            super.move();
         }
     }
     
