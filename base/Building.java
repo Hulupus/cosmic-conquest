@@ -14,4 +14,8 @@ public class Building{
     public Boolean clicked(){
         return building.mouseClicked();
     }
+    
+    public void move(double x){
+        building.move(x);
+    }
 }

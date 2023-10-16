@@ -44,9 +44,9 @@ public class Kontrollzentrum
         level = new Level(1);
 
         mainShip = new PlayerShip();
-        // base = new Base();
-        // screenManager.openScreen("baseMain", view);
-        screenManager.openScreen("level", view);
+        base = new Base(view);
+        screenManager.openScreen("baseMain", view);
+        /**screenManager.openScreen("level", view);
         for (int i = 0; i < 100; i++) {
             mainShip.move();
             view.wait(3);
@@ -59,8 +59,13 @@ public class Kontrollzentrum
             cruiser.fire();
             mainShip.fire(view);
             view.wait(3);
-        }
+        }*/ // Zum testen der Base danach bitte "/**" entfernen
     }
+    
+    public View getView(){
+        return view;
+    }
+    
 
     // public void starteSpiel() {
         // startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");

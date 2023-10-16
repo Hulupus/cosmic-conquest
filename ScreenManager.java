@@ -15,13 +15,14 @@ public class ScreenManager{
         titlescreen.setHidden(true);
         level = new Picture(0, 0, height, width, "assets/views/background.png");
         level.setHidden(true);
-        baseMain = new Picture(0, 0, height, width, "assets/views/base/base_background.png");
-        baseMain.setHidden(true);
-        // baseShipBay = new Picture(0, 0, height, width, "URL");
-        // baseShipBay.setHidden(true);
+        ////baseMain = new Picture(0, 0, height * 6, width, "assets/views/base/Cosmic_Conquest_base_background.png");
+        ////baseMain.setHidden(true);
+        //baseShipBay = new Picture(0, 0, height, width, "URL");
+        //baseShipBay.setHidden(true);
         // baseLab = new Picture(0, 0, height, width, "URL");
         // baseLab.setHidden(true);
         loading = new Picture(0, 0, height, width, "assets/views/loadingscreen.png");
+        loading.setHidden(true); // wieder entfernen
         openedScreen = "loading";
     }
     

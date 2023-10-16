@@ -2,11 +2,12 @@ package base;
 
 import sas.*;
 public class Base{
-    private Picture base_planet;
+    private Picture base_background;
     
     //Buildings
-    private Laboratory labor;
+    private Laboratory[] labor;
     private ShipBay shipBay;
+    private Observatory observatory;
     
     //Material
         // Overseer
@@ -21,46 +22,86 @@ public class Base{
 
     
 
-    public Base(){
-        base_planet = new Picture(-25, 475, 850, 850, "assets/views/base/Cosmic_Conquest_base_planet.png");
+    public Base(View view){
+        //Background
+        base_background = new Picture (0, 0, 800 * 6, 800, "assets/views/base/Cosmic_Conquest_base_background.png");
         
         //Buldings
-        labor = new Laboratory();
+        labor = new Laboratory[2]; // unter umständen Arraylist oder Menge begrenzen
+        labor[0] = new Laboratory();
+        labor[1] = new Laboratory();
         shipBay = new ShipBay();
-
+        observatory = new Observatory();
+        
+        BaseRun(view);
     }
     
-    public void BaseRun(View view){
+    // Wie benutzt man den ScreenManager?
+    public void BaseRun(View view /*, ScreenManager screenManager*/){
         while (true){
-            // if (ShipBay.clicked()){
-                // screenmanager.openscreen(screen2ShipBay);
-            // }
-            // if (Laboratory.clicked()){
-                // screenmanager.openscreen(screen3Labor);
-            // }
-            turnPlanet(view);
+            if (shipBayClicked()){
+                // openScreen(screenManager.baseShipBay, view);
+            }
+            if (shipBayClicked()){
+                // openScreen(screenManager.baseShipBay, view);
+            }
+            moveBase(view);
         }
     }
     
-    public void turnPlanet(View view){
+    public void moveBase(View view){
         if (view.keyPressed('a')){
-            base_planet.turn(400, 900, -0.2);
-            labor.turn(-0.2);
+            if (base_background.getShapeX() <= 0){
+                //Background
+                base_background.move(0.0001);
+                
+                //Buildings
+                shipBay.move(0.0001);
+                observatory.move(0.0001);
+                for (int i = 0; i < labor.length; i++){ //
+                    labor[i].move(0.0001);
+                }
+            }
         } else if(view.keyPressed('d')){
-            base_planet.turn(400, 900, 0.2);
-            labor.turn(-0.2);
+            if (base_background.getShapeX() >= -4000){
+                //Background
+                base_background.move(-0.0001);
+                
+                //Buildings
+                shipBay.move(-0.0001);
+                observatory.move(-0.0001);
+                for (int i = 0; i < labor.length; i++){
+                    labor[i].move(-0.0001);
+                }
+            }
         }
     }
     
     public void build(String BuildingType, View view){
         
-        
-        // while(!view.keyPressed('b')){
-            // if (view.keyPressed('q')){
-                // .turn(400, 800, -1);
-            // } else if(view.keyPressed('e')){
-                // .turn(400, 800, 1);
-            // }
-        // }
     }
+    
+    public boolean shipBayClicked(){
+        if (shipBay.clicked()){
+                return true;
+        }
+        return false;
+    }
+    
+    public int laborClicked(){
+        for (int i = 0; i < labor.length; i++){
+            if (labor[i].clicked()){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    public boolean observatoryClicked(){
+        if (observatory.clicked()){
+                return true;
+        }
+        return false;
+    }
+    
 }
