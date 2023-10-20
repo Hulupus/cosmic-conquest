@@ -36,10 +36,7 @@ public class PlayerShip extends Ship
     }
     
     public void fire(View v) {
-        if (v.keyPressed(' ')) {
-            super.fire();
-            return;
-        }
-        weapon.moveLasers();
+        if (v.keyPressed(' ')) super.fire();
+        else weapon.moveProjectiles();
     }
 }

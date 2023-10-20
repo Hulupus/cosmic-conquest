@@ -10,11 +10,12 @@ public class Projectile
     private String imageURL;
     
     // Attribute:
+    private int damage;
     private double speed;
     private double direction;
     private int orginXPosition;
     
-    public Projectile(int xPosition, int yPosition, int width, int height, String image, double speed, double direction)
+    public Projectile(int xPosition, int yPosition, int width, int height, String image, int damage, double speed, double direction)
     {
         this.projectile = new Picture(xPosition, yPosition, width, height, image);
         this.width = width;
@@ -22,6 +23,7 @@ public class Projectile
         this.imageURL = image;
         this.projectile.setHidden(true);
         this.orginXPosition = xPosition;
+        this.damage = damage;
         this.speed = speed;
         this.direction = direction;
         this.projectile.setDirection(direction);
@@ -37,6 +39,11 @@ public class Projectile
         orginXPosition = (int) x;
     }
     
+    public boolean intersects(Ship ship) {
+        if (projectile.intersects(ship.getShip())) return true;
+        else return false;
+    }
+    
     @Override
     public Projectile clone() {
         Projectile cloneProjectile = new Projectile(
@@ -45,6 +52,7 @@ public class Projectile
             width,
             height,
             imageURL,
+            damage,
             speed,
             direction
         );
@@ -58,5 +66,9 @@ public class Projectile
     
     public void setHidden(boolean hidden) {
         projectile.setHidden(hidden);
+    }
+    
+    public int getDamage() {
+        return damage;
     }
 }

@@ -5,72 +5,81 @@ import util.List;
 
 public class Weapon
 {
-    private Queue<Projectile> lasers;
-    private List<Projectile> firedLasers;
+    private Queue<Projectile> projectiles;
+    private List<Projectile> firedProjectiles;
     private double[] firePositions;
     private int cooldown;
-    
+
     private Ship attachedShip;
-    
+
     //Attributes
     private double cooldownTime;
     private double failureRate;
-    
+
     public Weapon(Projectile projectile, int projectileCount, double cooldownTime, double failureRate)
     {
         this.attachedShip = attachedShip;
         this.cooldownTime = cooldownTime;
         this.cooldown = (int) cooldownTime;
         this.failureRate = failureRate;
-        
-        this.lasers = new Queue<>();
-        this.lasers.enqueue(projectile);
+
+        this.projectiles = new Queue<>();
+        this.projectiles.enqueue(projectile);
         for (int i = 1; i < projectileCount; i++) {
-            this.lasers.enqueue(projectile.clone());
+            this.projectiles.enqueue(projectile.clone());
         }
-        
-        firedLasers = new List<>();
-        
+
+        firedProjectiles = new List<>();
+
         firePositions = new double[] { (25/2) };
     }
-    
+
     public void fire()
     {
-        if (lasers.isEmpty()) return;
+        if (projectiles.isEmpty()) return;
         if (Math.round(Math.random() * failureRate) == 0) {
             cooldown = 0;
             return;
         }
-        lasers.front().moveTo(attachedShip.getX() + firePositions[0], attachedShip.getY());
+        projectiles.front().moveTo(attachedShip.getX() + firePositions[0], attachedShip.getY());
         cooldown = 0;
-        
-        firedLasers.append(lasers.front());
-        lasers.dequeue();
+
+        firedProjectiles.append(projectiles.front());
+        projectiles.dequeue();
     }
-    
-    public void moveLasers()
+
+    public void moveProjectiles()
     {
-        firedLasers.toFirst();
-        while (firedLasers.hasAccess()) {
-            firedLasers.getContent().move();
-            if (firedLasers.getContent().getY() < -20 || firedLasers.getContent().getY() > 820) {
-                lasers.enqueue(firedLasers.getContent());
-                firedLasers.getContent().setHidden(true);
-                firedLasers.remove();
+        firedProjectiles.toFirst();
+        while (firedProjectiles.hasAccess()) {
+            firedProjectiles.getContent().move();
+            if (firedProjectiles.getContent().getY() < -20 || firedProjectiles.getContent().getY() > 820) {
+                projectiles.enqueue(firedProjectiles.getContent());
+                firedProjectiles.getContent().setHidden(true);
+                firedProjectiles.remove();
             }
-            firedLasers.next();
+            firedProjectiles.next();
         }
     }
-    
+
     public boolean canFire () {
-        if (cooldown < cooldownTime) {return false;}
-        return true;
+        if (cooldown < cooldownTime) return false;
+        else return true;
     }
-    
+
     protected void addCooldownTime () {
         cooldown += 1;
     }
-    
+
+    public boolean firedProjectilesIntersects (Ship ship) {
+        firedProjectiles.toFirst();
+        while (firedProjectiles.hasAccess() && !firedProjectiles.getContent().intersects(ship)) {
+            firedProjectiles.next();
+        }
+        if (firedProjectiles.hasAccess()) return true;
+        else return false;
+    }
+
     /* ****************** Getter and Setter ****************** */
     public void setAttachedShip(Ship attachedShip) {
         this.attachedShip = attachedShip;

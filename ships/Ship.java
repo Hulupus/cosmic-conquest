@@ -26,7 +26,7 @@ public abstract class Ship
         this.originXPosition = x;
         this.type = type;
         this.weapon = weapon;
-        this.weapon.setAttachedShip(this);
+        if (weapon != null) this.weapon.setAttachedShip(this);
     }
 
     public void move() {
@@ -46,6 +46,10 @@ public abstract class Ship
         if (this.ship.intersects(ship.getShip())){
             return true;
         }
+        System.out.println(ship.getWeapon().firedProjectilesIntersects(this));
+        if (ship.getWeapon() != null && ship.getWeapon().firedProjectilesIntersects(this)) {
+            return true;
+        }
         return false;
     }
 
@@ -53,9 +57,16 @@ public abstract class Ship
         if (weapon == null) return;
         if (weapon.canFire()) weapon.fire();
         else weapon.addCooldownTime();
-        weapon.moveLasers();
+        weapon.moveProjectiles();
     }
 
+    public void loseLives(int damage) {
+        lives -= damage;
+        if (lives <= 0) {
+            setHidden(true);
+        }
+    }
+    
     /* ****** Getter und Setter ****** */
     public String getType() {
         return type;
@@ -103,5 +114,9 @@ public abstract class Ship
 
     public void setHidden(boolean hidden) {
         ship.setHidden(hidden);
+    }
+    
+    public Weapon getWeapon() {
+        return weapon;
     }
 }

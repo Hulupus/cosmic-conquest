@@ -46,7 +46,7 @@ public class Kontrollzentrum
         mainShip = new PlayerShip();
         base = new Base(view);
         screenManager.openScreen("baseMain", view);
-        /**screenManager.openScreen("level", view);
+        /*screenManager.openScreen("level", view);
         for (int i = 0; i < 100; i++) {
             mainShip.move();
             view.wait(3);
