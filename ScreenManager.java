@@ -10,10 +10,10 @@ public class ScreenManager{
     private Picture baseLab;
     
     private String openedScreen;
-    public ScreenManager(int height, int width){
-        titlescreen = new Picture(0, 0, height, width,  "assets/views/titlescreen.png");
+    public ScreenManager(int width, int height){
+        titlescreen = new Picture(0, 0, width, height, "assets/views/titlescreen.png");
         titlescreen.setHidden(true);
-        level = new Picture(0, 0, height, width, "assets/views/background.png");
+        level = new Picture(0, 0, width, height, "assets/views/background.png");
         level.setHidden(true);
         ////baseMain = new Picture(0, 0, height * 6, width, "assets/views/base/Cosmic_Conquest_base_background.png");
         ////baseMain.setHidden(true);
@@ -21,7 +21,7 @@ public class ScreenManager{
         //baseShipBay.setHidden(true);
         // baseLab = new Picture(0, 0, height, width, "URL");
         // baseLab.setHidden(true);
-        loading = new Picture(0, 0, height, width, "assets/views/loadingscreen.png");
+        loading = new Picture(0, 0, width, height, "assets/views/loadingscreen.png");
         loading.setHidden(true); // wieder entfernen
         openedScreen = "loading";
     }

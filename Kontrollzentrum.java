@@ -21,7 +21,7 @@ public class Kontrollzentrum
     private ScreenManager screenManager;    
 
     //Explosion
-    private Picture explosion;
+    private List<Explosion> explosionen;
 
     //Schiffe
     private PlayerShip playerShip;
@@ -31,33 +31,46 @@ public class Kontrollzentrum
     //Sonstiges
     private Picture startbutton;
     private Lebensanzeige leben;
-    //private int activeLevel;
 
     private Level level;
 
     public Kontrollzentrum() {
         view = new View(800, 800, "Cosmic Conquest");
-        screenManager = new ScreenManager(800, 800);
-
-        // explosion = new Picture(0, 0, 60, 60, "assets/views/Explosion.png");
-        // explosion.setHidden(true);
-
-        level = new Level(1);
         
+        //Game
+        screenManager = new ScreenManager(800, 800);
+        base = new Base(view);
+        level = new Level(1);
+        // explosionen = new List<>();
+        // for (int i = 0; i < 3; i++) {
+            // Explosion explosion = new Explosion(); 
+            // explosion.setHidden(true);
+            // explosionen.append(explosion);
+        // }
+        
+        //Player
         playerShip = new PlayerShip();
+        leben = new Lebensanzeige(3);
+        
+        //Enemies
         enemyShips = new ShipCollection();
         activeEnemies = new List<Ship>();
         
-        base = new Base(view);
-        screenManager.openScreen("baseMain", view);
-        
-        // starteSpiel();
+        starteSpiel();
     }
     
-    public View getView(){
-        return view;
+    public void runBase(){
+        // screenManager.openScreen("baseMain", view);
+        while (true){
+            if (base.shipBayClicked()){
+                // openScreen(screenManager.baseShipBay, view);
+            }
+            if (base.shipBayClicked()){
+                // openScreen(screenManager.baseShipBay, view);
+            }
+            base.moveBase(view);
+        }
     }
-    
 
     public void starteSpiel() {
         // startbutton = new Picture(250, 450 , 300, 100, "assets/views/Cosmic_Conquest_startbutton.png");
@@ -66,17 +79,25 @@ public class Kontrollzentrum
         // }
         // startbutton.setHidden(true);
 
-        screenManager.openScreen("level", view);
-
         
-        leben = new Lebensanzeige(3);
-
-        for (int i = 0; i < 100; i++) {
-            playerShip.move();
-            view.wait(3);
+        // Auswahl:
+        // Level
+        // Base
+        // Editor
+        while(true) {
+            if (view.keyPressed('b')) {
+                runBase();
+            }
+            if (view.keyPressed('l')) {
+                screenManager.openScreen("level", view);
+                for (int i = 0; i < 110; i++) {
+                    playerShip.move();
+                    view.wait(3);
+                }
+                leben.showHearts();
+                starteLevel();
+            }
         }
-
-        starteLevel();
     }
 
     public void starteLevel() {
@@ -126,6 +147,11 @@ public class Kontrollzentrum
             //cruiser[j].toggleHidden(false);
         }
         return choosenShips;
+    }
+    
+    
+    public View getView(){
+        return view;
     }
     
     private class ShipCollection

@@ -13,10 +13,8 @@ public class Lebensanzeige
         hearts = new ArrayList<>();
         currentAmountOfHearts = startingHearts;
         for (int i = 0; i < maxHearts; i++) {
-            hearts.add(new Picture(25*i+10, 700, 37, 30, "assets/views/Herz.png"));
-            if (i > startingHearts-1) {
-                hearts.get(i).setHidden(true);
-            }
+            hearts.add(new Picture(25*i+10, 750, 37, 30, "assets/views/Herz.png"));
+            hearts.get(i).setHidden(true);
         }
     }
     
@@ -25,6 +23,12 @@ public class Lebensanzeige
             if (currentAmountOfHearts == 0) return;
             hearts.get(currentAmountOfHearts-1).setHidden(true);
             currentAmountOfHearts--;
+        }
+    }
+    
+    public void showHearts() {
+        for (int i = 0; i < currentAmountOfHearts; i++) {
+            hearts.get(i).setHidden(false);
         }
     }
     
