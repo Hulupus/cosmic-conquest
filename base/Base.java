@@ -2,8 +2,10 @@ package base;
 
 import sas.*;
 public class Base{
-    private Picture base_background;
-    
+    private Picture[] base_background;
+    private Picture base_background_left;
+    private Picture base_background_main;
+    private Picture base_background_right;
     //Buildings
     private Laboratory[] labor;
     private ShipBay shipBay;
@@ -24,7 +26,10 @@ public class Base{
 
     public Base(View view){
         //Background
-        base_background = new Picture (0, 0, 800 * 6, 800, "assets/views/base/Cosmic_Conquest_base_background.png");
+        base_background = new Picture[3];
+        base_background[1] = new Picture (-800 * 6, 0, 800 * 6, 800, "assets/views/base/Cosmic_Conquest_base_background.png");
+        base_background[2] = new Picture (0, 0, 800 * 6, 800, "assets/views/base/Cosmic_Conquest_base_background.png");
+        base_background[3] = new Picture (800 * 6, 0, 800 * 6, 800, "assets/views/base/Cosmic_Conquest_base_background.png");
         
         //Buldings
         labor = new Laboratory[2]; // unter umständen Arraylist oder Menge begrenzen
@@ -36,34 +41,44 @@ public class Base{
     
     public void moveBase(View view){
         if (view.keyPressed('a')){
-            if (base_background.getShapeX() <= 0){
-                //Background
-                base_background.move(0.0001);
+            //Background
+            for (int i = 0; i < base_background.length; i++){
+                base_background[i].move(0.0001);
+            }
                 
-                //Buildings
-                shipBay.move(0.0001);
-                observatory.move(0.0001);
-                for (int i = 0; i < labor.length; i++){ //
-                    labor[i].move(0.0001);
+            //Buildings
+            shipBay.move(0.0001);
+            observatory.move(0.0001);
+            for (int i = 0; i < labor.length; i++){ //
+                labor[i].move(0.0001);
+            }
+            if (base_background[2].getShapeX() <= -800 * 6){
+                for (int i = 0; i < base_background.length; i++){
+                    base_background[i].move(800 * 6);
                 }
             }
         } else if(view.keyPressed('d')){
-            if (base_background.getShapeX() >= -4000){
-                //Background
-                base_background.move(-0.0001);
+            //Background
+            for (int i = 0; i < base_background.length; i++){
+                base_background[i].move(-0.0001);
+            }
                 
-                //Buildings
-                shipBay.move(-0.0001);
-                observatory.move(-0.0001);
-                for (int i = 0; i < labor.length; i++){
-                    labor[i].move(-0.0001);
+            //Buildings
+            shipBay.move(-0.0001);
+            observatory.move(-0.0001);
+            for (int i = 0; i < labor.length; i++){ //
+                labor[i].move(-0.0001);
+            }
+            if (base_background[2].getShapeX() >= 800 * 6){
+                for (int i = 0; i < base_background.length; i++){
+                    base_background[i].move(-800 * 6);
                 }
             }
         }
     }
     
     public void build(String BuildingType, View view){
-        
+        // falls x zwischen 0 und 800 oder 4000 und 4800 dann zweites benutzbares Bild des Gebaeude jeweils hinter oder vor den Hauptbildschirm
     }
     
     public boolean shipBayClicked(){
