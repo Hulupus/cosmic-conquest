@@ -15,6 +15,7 @@ public abstract class Ship
     private double flightDirection;
     private int flightDeviation;
     private double flightVelocity;
+    private int invincibilityTime;
 
     public Ship(String type, int x,int y, int width, int height, double[] properties, Weapon weapon)
     {
@@ -26,6 +27,7 @@ public abstract class Ship
         this.originXPosition = x;
         this.type = type;
         this.weapon = weapon;
+        invincibilityTime = 0;
         if (weapon != null) this.weapon.setAttachedShip(this);
     }
 
@@ -43,10 +45,11 @@ public abstract class Ship
     }
 
     public boolean collides(Ship ship){
+        if (invincibilityTime > 0) return false;
+        else invincibilityTime--;
         if (this.ship.intersects(ship.getShip())){
             return true;
         }
-        System.out.println(ship.getWeapon().firedProjectilesIntersects(this));
         if (ship.getWeapon() != null && ship.getWeapon().firedProjectilesIntersects(this)) {
             return true;
         }
@@ -118,5 +121,10 @@ public abstract class Ship
     
     public Weapon getWeapon() {
         return weapon;
+    }
+    
+    public int getWeaponDamage() {
+        if (weapon != null) return getWeapon().getDamage();
+        else return 0;
     }
 }

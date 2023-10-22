@@ -13,17 +13,19 @@ public class Lebensanzeige
         hearts = new ArrayList<>();
         currentAmountOfHearts = startingHearts;
         for (int i = 0; i < maxHearts; i++) {
-            hearts.add(new Picture(25*i+10, 600, 37, 30, "assets/views/Herz.png"));
+            hearts.add(new Picture(25*i+10, 700, 37, 30, "assets/views/Herz.png"));
             if (i > startingHearts-1) {
                 hearts.get(i).setHidden(true);
             }
         }
     }
     
-    public void removeHeart() {
-        if (currentAmountOfHearts == 0) {return;}
-        hearts.get(currentAmountOfHearts-1).setHidden(true);
-        currentAmountOfHearts--;
+    public void removeHearts(int amount) {
+        for (int i = 0; i < amount; i++) {
+            if (currentAmountOfHearts == 0) return;
+            hearts.get(currentAmountOfHearts-1).setHidden(true);
+            currentAmountOfHearts--;
+        }
     }
     
     public void addHeart() {

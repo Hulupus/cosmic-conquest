@@ -13,6 +13,7 @@ public class Weapon
     private Ship attachedShip;
 
     //Attributes
+    private int damage;
     private double cooldownTime;
     private double failureRate;
 
@@ -20,6 +21,7 @@ public class Weapon
     {
         this.attachedShip = attachedShip;
         this.cooldownTime = cooldownTime;
+        this.damage = projectile.getDamage();
         this.cooldown = (int) cooldownTime;
         this.failureRate = failureRate;
 
@@ -83,5 +85,9 @@ public class Weapon
     /* ****************** Getter and Setter ****************** */
     public void setAttachedShip(Ship attachedShip) {
         this.attachedShip = attachedShip;
+    }
+    
+    public int getDamage() {
+        return damage;
     }
 }
