@@ -48,10 +48,10 @@ public class Kontrollzentrum
         enemyShips = new ShipCollection();
         activeEnemies = new List<Ship>();
         
-        // base = new Base(view);
-        // screenManager.openScreen("baseMain", view);
+        base = new Base(view);
+        screenManager.openScreen("baseMain", view);
         
-        starteSpiel();
+        // starteSpiel();
     }
     
     public View getView(){

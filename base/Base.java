@@ -32,21 +32,6 @@ public class Base{
         labor[1] = new Laboratory();
         shipBay = new ShipBay();
         observatory = new Observatory();
-        
-        BaseRun(view);
-    }
-    
-    // Wie benutzt man den ScreenManager?
-    public void BaseRun(View view /*, ScreenManager screenManager*/){
-        while (true){
-            if (shipBayClicked()){
-                // openScreen(screenManager.baseShipBay, view);
-            }
-            if (shipBayClicked()){
-                // openScreen(screenManager.baseShipBay, view);
-            }
-            moveBase(view);
-        }
     }
     
     public void moveBase(View view){
