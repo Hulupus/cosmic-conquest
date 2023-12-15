@@ -2,6 +2,12 @@ package base;
 
 import sas.*;
 public class Base{
+    // Karte[] kartendeck = new Karte[200];
+    // Karte[] aktivesKartendeck = new Karte[5];
+    // Karte[] ablagestapel = new Karte[200];
+    
+    
+    
     private Picture[] base_background;
     private Picture base_background_left;
     private Picture base_background_main;
@@ -91,19 +97,6 @@ public class Base{
         }
     }
     
-    // public String build(String BuildingType, View view){
-        // // falls x zwischen 0 und 800 oder 4000 und 4800 dann zweites benutzbares Bild des Gebaeude jeweils hinter oder vor den Hauptbildschirm
-        // if (BuildingType.equals("Observatory")){
-            // if (observatory.getBuild()){
-                // return "Gebäude des selben Typ wurde bereits gebaut!";
-            // } else{
-                // while(!base_background[1].mouseClicked() /*&& !observatory.collides()*/){
-                    // observatory.moveTo((double) base_background[1].getMouseX(), 0);
-                // }
-            // }
-        // }
-    // }
-    
     public boolean shipBayClicked(){
         if (shipBay.clicked()){
                 return true;
@@ -127,4 +120,6 @@ public class Base{
         return false;
     }
 
+    
+    
 }
